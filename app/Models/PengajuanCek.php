@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataPengajuanCek extends Model
+class PengajuanCek extends Model
 {
     use HasFactory;
+    protected $table ='data_pengajuan_ceks';
+    protected $guarded = [];
 }

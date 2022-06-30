@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('summaries', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pengaju');
+            // $table->string('email');
             $table->string('nama_pelaku');
             $table->string('summary');
             $table->timestamps();

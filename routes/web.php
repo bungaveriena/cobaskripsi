@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MapLocation;
+use App\Http\Livewire\DataSummary;
 use App\Http\Livewire\DataPendamping;
-use App\Http\Livewire\Summary\Index;
+use App\Http\Livewire\DataPengaduan;
+use App\Http\Livewire\FormPengaduan;
+use App\Http\Livewire\DataPengajuancek;
+use App\Http\Livewire\FormPengajuancek;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +34,9 @@ Route::get('/map', MapLocation::class);
 // Route::livewire('/create', 'summary.create')->name('summary.create');
 // Route::livewire('/edit/{id}', 'summary.edit')->name('summary.edit');
 
-//Route::get('/summary', Summary::class);
+Route::get('/summary', DataSummary::class);
+Route::get('/pendamping', DataPendamping::class);
+Route::get('/pengaduan', DataPengaduan::class);
+Route::get('/formpengaduan', FormPengaduan::class);
+Route::get('/pengajuancek', DataPengajuancek::class);
+Route::get('/formpengajuancek', FormPengajuancek::class);
