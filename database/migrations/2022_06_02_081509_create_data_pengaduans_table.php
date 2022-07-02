@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('alamat_pelaku');
             $table->string('email_pelaku');
             $table->string('notlp_pelaku');
-            $table->string('bukti');
+            $table->string('bukti'); //file upload
             $table->string('bantuan');
             $table->timestamps();
         });

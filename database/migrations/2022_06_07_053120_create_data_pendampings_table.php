@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pendamping');
             $table->string('pendidikan');
+            $table->string('asal_instansi');
             $table->string('email');
             $table->string('no_tlp');
             $table->timestamps();

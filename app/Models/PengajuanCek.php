@@ -10,4 +10,8 @@ class PengajuanCek extends Model
     use HasFactory;
     protected $table ='data_pengajuan_ceks';
     protected $guarded = [];
+
+    public function summary(){
+        return $this->hasOne(Summary::class);
+    }
 }

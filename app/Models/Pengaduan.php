@@ -10,4 +10,8 @@ class Pengaduan extends Model
     use HasFactory;
     protected $table ='data_pengaduans';
     protected $guarded = [];
+
+    public function jadwal(){
+        return $this->hasOne(JadwalKonsul::class);
+    }
 }

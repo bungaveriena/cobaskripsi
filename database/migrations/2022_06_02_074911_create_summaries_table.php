@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('summaries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('pengajuan_id');
             $table->string('nama_pengaju');
-            // $table->string('email');
+            $table->string('email_pengaju');
             $table->string('nama_pelaku');
             $table->string('summary');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

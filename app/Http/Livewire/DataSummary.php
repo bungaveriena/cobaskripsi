@@ -12,7 +12,7 @@ class DataSummary extends Component
 {
     use WithPagination;
 
-    public $summaryId, $nama_pengaju, $nama_pelaku,  $summary;
+    public $summaryId, $nama_pengaju, $email_pengaju, $created_by, $nama_pelaku,  $summary;
     //public $email; alamat yang dituju utk mengirim summary ke pengaju
     public $isEdit = false;
     public $search;
@@ -23,7 +23,8 @@ class DataSummary extends Component
         $this->nama_pengaju = '';
         $this->nama_pelaku = '';
         $this->summary = '';
-        // $this->email = ''; email pengaju yang dituju
+        $this->created_by = '';
+        $this->email_pengaju = ''; //email pengaju yang dituju
         
     }
 
@@ -31,19 +32,20 @@ class DataSummary extends Component
         $this->validate([
             'nama_pengaju' => 'required',
             'nama_pelaku' => 'required',
-            'summary' => 'required'
-            //'email' => 'required',
+            'summary' => 'required',
+            'created_by' => 'required',
+            'email_pengaju' => 'required',
         ]);
 
 
         Summary::create([
             'nama_pengaju' => $this->nama_pengaju,
             'nama_pelaku' => $this->nama_pelaku,
-            'summary' => $this->summary
-            //'email' => $this->email,
+            'summary' => $this->summary,
+            'created_by' => $this->created_by,
+            'email_pengaju' => $this->email_pengaju
         ]);
 
-        Mail::to('baennable00@gmail.com')->send(new SendSummary($this->nama_pengaju,$this->nama_pelaku,$this->summary));
 
 
         session()->flash('message', 'Data tersimpan');
@@ -57,7 +59,8 @@ class DataSummary extends Component
         $this->nama_pengaju = $summary->nama_pengaju;
         $this->nama_pelaku = $summary->nama_pelaku;
         $this->summary = $summary->summary;
-        //$this->email = $summary->email;
+        $this->email_pengaju = $summary->email_pengaju;
+        $this->created_by = $summary->created_by;
         $this->isEdit = true;
 
     }
@@ -67,7 +70,7 @@ class DataSummary extends Component
             'nama_pengaju' => 'required',
             'nama_pelaku' => 'required',
             'summary' => 'required',
-            //'email' => 'required',
+            'email_pengaju' => 'required'
             
         ]);
 
@@ -76,8 +79,9 @@ class DataSummary extends Component
             $updateData = [
                 'nama_pengaju' => $this->nama_pengaju,
                 'nama_pelaku' => $this->nama_pelaku,
-                'summary' => $this->summary
-                // 'email' => $this->email,
+                'summary' => $this->summary,
+                'email_pengaju' => $this->email_pengaju,
+                'created_by' => $this->created_by
             ];
         
 
@@ -96,25 +100,25 @@ class DataSummary extends Component
 
     }
 
-    // public function sendSummary(){
-    //     $this->validate([
-    //         'nama_pengaju' => 'required',
-    //         'nama_pelaku' => 'required',
-    //         'summary' => 'required'
-    //         //'email' => 'required',
-    //     ]);
+    public function sendSummary(){
+       
+        
+        // $konten_email = [
+        //     'nama_pengaju' => $this->nama_pengaju,
+        //     'nama_pelaku' => $this->nama_pelaku,
+        //     'summary' => $this->summary,
+        //     'email_pengaju' => $this->email_pengaju,
+        // ];
+        
+        $summary = Summary::findOrFail($this->summaryId);
+        
+        // Mail::to('baennable00@gmail.com')->send(new SendSummary($this->nama_pengaju,$this->nama_pelaku,$this->summary));
+        Mail::to($summary->email_pengaju)->send(new SendSummary($summary));
+        
 
-
-    //     // Summary::create([
-    //     //     'nama_pengaju' => $this->nama_pengaju,
-    //     //     'nama_pelaku' => $this->nama_pelaku,
-    //     //     'summary' => $this->summary
-    //     //     //'email' => $this->email,
-    //     // ]);
-
-    //     session()->flash('message', 'Data tersimpan');
-    //     $this->clearForm();
-    // }
+        session()->flash('message', 'Data tersimpan');
+        $this->clearForm();
+    }
 
     public function render()
     {

@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jadwal_konsuls', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_korban');
-            $table->foreignId('pengaduan_id');
-            $table->string('hari');
-            $table->date('tanggal');
-            $table->time('pukul');
-            $table->string('pendamping');
-            $table->string('kronologi');
-            $table->string('keterangan');
+            $table->string('role');
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwal_konsuls');
+        Schema::dropIfExists('roles');
     }
 };

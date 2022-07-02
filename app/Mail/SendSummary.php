@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Summary;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,17 +12,17 @@ class SendSummary extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $konten_email;
+
     protected $nama_pelaku, $nama_pengaju, $summary;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nama_pengaju, $nama_pelaku, $summary)
+    public function __construct(Summary $summary)
     {
-        $this->nama_pengaju;
-        $this->nama_pelaku;
-        $this->summary;
+        $this->summary = $summary;
     }
 
     /**
@@ -31,6 +32,11 @@ class SendSummary extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.TemplateEmailSummary');
+        return $this->view('emails.TemplateEmailSummary')
+                    ->with([
+                        'nama_pelaku' =>$this->summary->nama_pelaku,
+                        'nama_pengaju'=>$this->summary->nama_pengaju,
+                        'summary'=>$this->summary->summary,
+                    ]);
     }
 }

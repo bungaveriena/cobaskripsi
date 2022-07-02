@@ -23,6 +23,14 @@
                     @enderror
                 </div>
                 <div class="col">
+                    <input  wire:model= "email_pengaju" type="text" class="form-control @error('email_pengaju') is-invalid @enderror"  placeholder="Email Pengaju">
+                    @error('email_pengaju')
+                        <span class="invalid-feedback">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="col">
                     <input  wire:model= "nama_pelaku" type="text" class="form-control @error('nama_pelaku') is-invalid @enderror"  placeholder="Nama Pelaku">
                     @error('nama_pelaku')
                         <span class="invalid-feedback">
@@ -38,9 +46,20 @@
                         </span>
                     @enderror
                 </div>
+                <div class="col">
+                    <input  wire:model= "created_by" type="text" class="form-control @error('created_by') is-invalid @enderror"  placeholder="Oleh">
+                    @error('created_by')
+                        <span class="invalid-feedback">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-sm btn-primary">{{ $isEdit? "Update Data" : "Submit Data"}}</button>
+        @if($isEdit)
+        <button wire:click="sendSummary" type="button" class="btn btn-danger text-white">Send Email</button>
+        @endif
     </form>
 
     <div class="col">
@@ -52,6 +71,7 @@
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama Pengaju</th>
+                <th scope="col">Email Pengaju</th>
                 <th scope="col">Nama Pelaku</th>
                 <th scope="col">Summary</th>
                 <th scope="col">Aksi</th>
@@ -64,6 +84,7 @@
             <tr>
                 <th scope ="row">{{ $no }} </th>
                 <td>{{ $summary->nama_pengaju }}</td>
+                <td>{{ $summary->email_pengaju }}</td>
                 <td>{{ $summary->nama_pelaku }}</td>
                 <td>{{ $summary->summary }}</td>
                 <td>

@@ -7,6 +7,17 @@
         <title>Summary</title>
     </head>
     <body>
-        <h1>Test kirim email</h1>
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Hi {{$nama_pengaju}}</h5>
+            <p class="card-text">Berikut adalah informasi yang dapat kami berikan dari form pengajuan yang telah kamu isi.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Nama : {{ $nama_pelaku}}</li>
+        </ul>
+        <div class="card-body">
+            <p class="card-text">{{ $summary }}</p>
+        </div>
+        </div>
     </body>
 </html>

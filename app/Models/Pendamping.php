@@ -12,4 +12,8 @@ class Pendamping extends Model
     protected $fillable = [
         'nama_pendamping', 'pendidikan', 'email', 'no_tlp'
     ];
+
+    public function jadwal(){
+        return $this->hasMany(JadwalKonsul::class);
+    }
 }
