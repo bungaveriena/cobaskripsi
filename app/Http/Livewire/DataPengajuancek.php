@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class DataPengajuancek extends Component
 {
-    public $pengaduanId, $nama_pengaju, $alamat, $no_tlp, $email;
+    public $pengajuanId, $nama_pengaju, $alamat, $no_tlp, $email;
         public $asal_instansi, $nama_diajukan;
         public $relasi,  $keperluan;
         public $isDetail = false;
@@ -16,7 +16,7 @@ class DataPengajuancek extends Component
         public function findPengajuanById($id){
             $data_pengajuan = PengajuanCek::findOrFail($id);
             
-            $this->pengaduanId = $id; 
+            $this->pengajuanId = $id; 
             $this->nama_pengaju = $data_pengajuan->nama_pengaju;
             $this->alamat = $data_pengajuan->alamat;
             $this->no_tlp = $data_pengajuan->no_tlp;

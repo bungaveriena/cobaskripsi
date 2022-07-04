@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_pengaju');
             $table->string('alamat');
             $table->string('no_tlp');
-            $table->string('email');
+            $table->string('email_pengaju');
             $table->string('asal_instansi');
             $table->string('nama_diajukan');
             $table->string('relasi');

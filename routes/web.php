@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\DashboardAdmin;
+use App\Http\Livewire\DataJadwalKonsul;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MapLocation;
 use App\Http\Livewire\DataSummary;
@@ -38,7 +40,9 @@ Route::get('/map', MapLocation::class);
 Route::get('/summary', DataSummary::class);
 Route::get('/pendamping', DataPendamping::class);
 Route::get('/pengaduan', DataPengaduan::class);
+Route::get('/jadwalkonsul', DataJadwalKonsul::class);
 Route::get('/formpengaduan', FormPengaduan::class);
 Route::get('/pengajuancek', DataPengajuancek::class);
 Route::get('/formpengajuancek', FormPengajuancek::class);
 Route::get('/index', HomeIndex::class);
+Route::get('/dashboard', DashboardAdmin::class);

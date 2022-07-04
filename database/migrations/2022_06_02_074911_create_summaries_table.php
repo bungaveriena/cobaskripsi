@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignId('pengajuan_id');
             $table->string('nama_pengaju');
             $table->string('email_pengaju');
-            $table->string('nama_pelaku');
+            $table->string('nama_diajukan');
             $table->string('summary');
-            $table->string('created_by');
+            $table->string('created_by'); //session user login
             $table->timestamps();
         });
     }

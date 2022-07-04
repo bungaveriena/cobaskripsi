@@ -84,7 +84,11 @@
         </main>
     </div>
     @livewireScripts
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+
+
+
     @stack('scripts')
 </body>
 </html>

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class FormPengajuancek extends Component
 {
-    public $pengaduanId, $nama_pengaju, $alamat, $no_tlp, $email;
+    public $pengajuanId, $nama_pengaju, $alamat, $no_tlp, $email;
     public $asal_instansi, $nama_diajukan;
     public $relasi,  $keperluan;
 

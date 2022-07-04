@@ -31,8 +31,8 @@
                     @enderror
                 </div>
                 <div class="col">
-                    <input  wire:model= "nama_pelaku" type="text" class="form-control @error('nama_pelaku') is-invalid @enderror"  placeholder="Nama Pelaku">
-                    @error('nama_pelaku')
+                    <input  wire:model= "nama_diajukan" type="text" class="form-control @error('nama_diajukan') is-invalid @enderror"  placeholder="Nama Pelaku">
+                    @error('nama_diajukan')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
                         </span>
@@ -85,7 +85,7 @@
                 <th scope ="row">{{ $no }} </th>
                 <td>{{ $summary->nama_pengaju }}</td>
                 <td>{{ $summary->email_pengaju }}</td>
-                <td>{{ $summary->nama_pelaku }}</td>
+                <td>{{ $summary->nama_diajukan }}</td>
                 <td>{{ $summary->summary }}</td>
                 <td>
                    <button wire:click="findSummaryById({{ $summary->id}})" class = "btn btn-sm btn-info text-white">Edit</button>
