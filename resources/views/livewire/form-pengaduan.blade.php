@@ -7,7 +7,7 @@
 
 <!-- kenapa div alert mau jalan kalo diatas doang ya -->
 
-    <body class="sub_page">
+<body class="sub_page">
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -197,18 +197,6 @@
 </div>
 </section>
 
-<!DOCTYPE html><html><head><meta charset="utf-8"/>
-
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <!-- Site Metas -->
-  <meta name="keywords" content=""/>
-  <meta name="description" content=""/>
-  <meta name="author" content=""/>
-
-  <title>BigWing</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css"/>
@@ -222,152 +210,13 @@
   <link href="css/style.css" rel="stylesheet"/>
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet"/>
-</head>
 
-
-
-
-
-  
-    <!-- <form wire:submit.prevent="savePengaduan">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Nama Korban</label>
-            <input  wire:model= "nama_korban" type="text" class="form-control @error('nama_korban') is-invalid @enderror"  placeholder="nama korban">
-                @error('nama_korban')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-          <div class="form-group col-md-6">
-            <label>>Alamat Korban</label>
-            <input  wire:model= "alamat_korban" type="text" class="form-control @error('alamat_korban') is-invalid @enderror"  placeholder="alamat korban">
-                @error('alamat_korban')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Email Korban</label>
-            <input  wire:model= "email_korban" type="text" class="form-control @error('email_korban') is-invalid @enderror"  placeholder="email korban">
-                @error('email_korban')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-          <div class="form-group col-md-6">
-            <label>Kontak Korban</label>
-            <input  wire:model= "notlp_korban" type="text" class="form-control @error('notlp_korban') is-invalid @enderror"  placeholder="nomor telepon korban">
-                @error('notlp_korban')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Pembuat Pengaduan</label>
-            <input  wire:model= "pembuat_pengaduan" type="text" class="form-control @error('pembuat_pengaduan') is-invalid @enderror"  placeholder="nama pembuat pengaduan">
-                @error('pembuat_pengaduan')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-          <div class="form-group col-md-6">
-            <label>Relasi Pembuat Pengaduan Dengan Korban</label>
-            <input  wire:model= "relasi_korban" type="text" class="form-control @error('relasi_korban') is-invalid @enderror"  placeholder="relasi dengan korban">
-                @error('relasi_korban')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Nama Pelaku</label>
-            <input  wire:model= "nama_pelaku" type="text" class="form-control @error('nama_pelaku') is-invalid @enderror"  placeholder="nama pelaku">
-                @error('nama_pelaku')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-          <div class="form-group col-md-6">
-            <label>Alamat Pelaku</label>
-            <input  wire:model= "alamat_pelaku" type="text" class="form-control @error('alamat_pelaku') is-invalid @enderror"  placeholder="alamat pelaku">
-                @error('alamat_pelaku')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Email Pelaku</label>
-            <input  wire:model= "email_pelaku" type="text" class="form-control @error('email_pelaku') is-invalid @enderror"  placeholder="email pelaku">
-                @error('email_pelaku')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-          <div class="form-group col-md-6">
-            <label>Nomor Telepon Pelaku</label>
-            <input  wire:model= "notlp_pelaku" type="text" class="form-control @error('notlp_pelaku') is-invalid @enderror"  placeholder="nomor telepon pelaku">
-                @error('notlp_pelaku')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Bukti Yang Dapat Dilampirkan</label>
-            <input  wire:model= "bukti" type="text" class="form-control @error('bukti') is-invalid @enderror"  placeholder="bukti">
-                @error('bukti')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-          <div class="form-group col-md-6">
-            <label>Bantuan yang dibutuhkan</label>
-            <input  wire:model= "bantuan" type="text" class="form-control @error('bantuan') is-invalid @enderror"  placeholder="bantuan">
-                @error('bantuan')
-                    <span class="invalid-feedback">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-          </div>
-        </div>
-          <div class="form-group col-md-6">
-            <label for="inputState">Select Service</label>
-            <select id="inputState" class="form-control">
-              <option selected=""></option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
-            <button type="submit" class="">Submit Data</button>
-    </form> -->
-    
-  </section>
 
 
   <!-- end contact section -->
-  <div class="footer_bg">
+  <!-- <div class="footer_bg"> -->
     <!-- info section -->
-    <section class="info_section layout_padding2-bottom">
+    <!-- <section class="info_section layout_padding2-bottom">
       <div class="container">
         <h3 class="">
           BigWing
@@ -491,7 +340,7 @@
                 </div>
             </div>
 
-    </section>
+    </section> -->
 
     <!-- end info_section -->
 
@@ -503,7 +352,7 @@
       </p>
     </section>
     <!-- footer section -->
-  </div>
+  </div> -->
 
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
