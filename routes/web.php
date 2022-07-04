@@ -8,6 +8,7 @@ use App\Http\Livewire\DataPengaduan;
 use App\Http\Livewire\FormPengaduan;
 use App\Http\Livewire\DataPengajuancek;
 use App\Http\Livewire\FormPengajuancek;
+use App\Http\Livewire\HomeIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,4 @@ Route::get('/pengaduan', DataPengaduan::class);
 Route::get('/formpengaduan', FormPengaduan::class);
 Route::get('/pengajuancek', DataPengajuancek::class);
 Route::get('/formpengajuancek', FormPengajuancek::class);
+Route::get('/index', HomeIndex::class);
