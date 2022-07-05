@@ -108,7 +108,7 @@
                     @enderror
             </div>
             <div class="form-group col-md-6">
-                <input  wire:model= "nama_diajukan" type="text" class="form-control @error('nama_diajukan') is-invalid @enderror"  placeholder="relasi pembuat pengaduan dengan korban">
+                <input  wire:model= "nama_diajukan" type="text" class="form-control @error('nama_diajukan') is-invalid @enderror"  placeholder="nama yang diajukan untuk dicek">
                     @error('nama_diajukan')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
@@ -118,7 +118,7 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <input  wire:model= "relasi" type="text" class="form-control @error('relasi') is-invalid @enderror"  placeholder="nama pelaku">
+                <input  wire:model= "relasi" type="text" class="form-control @error('relasi') is-invalid @enderror"  placeholder="relasi dengan nama yang diajukan">
                     @error('relasi')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
@@ -126,7 +126,7 @@
                     @enderror
             </div>
                 <div class="form-group col-md-6">
-                    <input  wire:model= "keperluan" type="text" class="form-control @error('keperluan') is-invalid @enderror"  placeholder="alamat pelaku">
+                    <input  wire:model= "keperluan" type="text" class="form-control @error('keperluan') is-invalid @enderror"  placeholder="keperluan pengajuan">
                     @error('keperluan')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
