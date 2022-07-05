@@ -13,7 +13,7 @@ class SummaryController extends Controller
         $data_pengajuan_ceks = PengajuanCek::latest()->paginate(10);
         return view('summary.index', compact('data_pengajuan_ceks'));
     }
-    
+
     public function create()
     {
         return view('summary.create');
@@ -40,8 +40,8 @@ class SummaryController extends Controller
         }
     }
 
-    public function edit(PengajuanCek $data_pengajuan){
-        return view('summary.edit', compact('data_pengajuan'));
+    public function edit(PengajuanCek $summary){
+        return view('summary.edit', compact('summary'));
     }
 
     public function update(Request $request, PengajuanCek $data_pengajuan)

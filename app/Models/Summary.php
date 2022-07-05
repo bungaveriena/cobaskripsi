@@ -18,6 +18,6 @@ class Summary extends Model
 
     public function pengajuan(){
 
-        return $this->belongsTo(PengajuanCek::class);
+        return $this->belongsTo(PengajuanCek::class, 'pengajuan_id');
     }
 }

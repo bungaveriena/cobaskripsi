@@ -14,6 +14,6 @@ class PengajuanCek extends Model
      'email_pengaju','asal_instansi', 'nama_diajukan', 'relasi', 'keperluan'];
 
     public function summary(){
-        return $this->hasOne(Summary::class);
+        return $this->hasOne(Summary::class, 'pengajuan_id');
     }
 }
