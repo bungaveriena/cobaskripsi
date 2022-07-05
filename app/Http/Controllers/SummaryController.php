@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PengajuanCek;
 use App\Models\Summary;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendSummary;
 use Illuminate\Http\Request;
 
 class SummaryController extends Controller
@@ -68,6 +70,12 @@ class SummaryController extends Controller
             //redirect dengan pesan error
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
+    }
+
+    public function sendSummary(){
+        $summary = Summary::findOrFail($this->summaryId);
+        
+        Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
     }
     
 
