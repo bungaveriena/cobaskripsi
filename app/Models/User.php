@@ -28,6 +28,12 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'roles');
     }
 
+    // the right one
+    // by Aa
+    public function role(){
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
     public function summary(){
         return $this->hasMany(Summary::class);
     }
