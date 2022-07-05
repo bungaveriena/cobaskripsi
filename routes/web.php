@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SummaryController;
 use App\Http\Livewire\DashboardAdmin;
 use App\Http\Livewire\DataJadwalKonsul;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +42,9 @@ Route::get('/map', MapLocation::class);
 // Route::livewire('/create', 'summary.create')->name('summary.create');
 // Route::livewire('/edit/{id}', 'summary.edit')->name('summary.edit');
 
-Route::get('/summary', DataSummary::class);
+//Route::get('/summary', DataSummary::class);
+
+Route::resource('/summary', SummaryController::class);
 
 Route::get('/pendamping', DataPendamping::class);
 Route::get('/pengaduan', DataPengaduan::class);
