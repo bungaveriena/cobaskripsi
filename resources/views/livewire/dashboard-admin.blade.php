@@ -358,6 +358,82 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class = "col-md-4">
+        <div class = "card">
+            <div class = "card-header">
+                Form data lokasi
+            </div>
+            <div class="card-body">
+                <form 
+                    @if($isEdit)
+                        wire:submit.prevent="updateLocation"
+                    @else
+                        wire:submit.prevent="saveLocation"
+                    @endif
+                >
+                    <div class= "row">
+                        <div class = "col-sm-6">
+                            <div class="form-group">
+                                <label>longtitude</label>
+                                <input wire:model= "long" type="text" class="form-control">
+                                @error('long') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+                        <div class = "col-sm-6">
+                            <div class="form-group">
+                                <label>latitude</label>
+                                <input wire:model= "lat" type="text" class="form-control">
+                                @error('lat') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class ="form-group">
+                        <label>Nama Pelaku</label>
+                        <input wire:model= "nama_pelaku" type="text" class="form-control">
+                        @error('nama_pelaku') <small class="text-danger">{{ $message }}</small> @enderror
+                    </div>
+                    <div class ="form-group">
+                        <label>Alamat</label>
+                        <input wire:model= "alamat" type="text" class="form-control">
+                        @error('alamat') <small class="text-danger">{{ $message }}</small> @enderror
+                    </div>
+                    <div class ="form-group">
+                        <label>Keterangan</label>
+                        <textarea wire:model= "keterangan" class="form-control"></textarea>
+                        @error('keterangan') <small class="text-danger">{{ $message }}</small> @enderror
+                    </div>
+                    <div class ="form-group">
+                        <label>Image</label>
+                        <div class="input-group mb-3">
+                            <input wire:model="image" type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <!-- @if($image)
+                                <img src="{{$image->temporaryUrl()}}" class="img-fluid">
+                            @endif
+
+                            @if($imageUrl && !$image)
+                                <img src = "{{asset('/storage/images/'.$imageUrl)}}" class="img-fluid">
+                            @endif -->
+                        </div>
+                        @error('image') <small class="text-danger">{{ $message }}</small> @enderror
+                        @if($image)
+                                <img src="{{$image->temporaryUrl()}}" class="img-fluid">
+                            @endif
+
+                            @if($imageUrl && !$image)
+                                <img src = "{{asset('/storage/images/'.$imageUrl)}}" class="img-fluid">
+                            @endif
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark text-white">{{ $isEdit? "Update Data" : "Submit Data"}}</button>
+                        @if($isEdit)
+                        <button wire:click="deleteLocation" type="button" class="btn btn-danger text-white">Delete Data</button>
+                        @endif
+                    </div>
+                </form>
+            </div>
+        </div>
     </div> 
  
 </div>

@@ -14,30 +14,7 @@
     @endif>
         <div class="form-group">
             <div class="form-row">
-                <div class="col">
-                    <input  wire:model= "nama_pengaju" type="text" class="form-control @error('nama_pengaju') is-invalid @enderror"  placeholder="Nama Pengaju">
-                    @error('nama_pengaju')
-                        <span class="invalid-feedback">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="col">
-                    <input  wire:model= "email_pengaju" type="text" class="form-control @error('email_pengaju') is-invalid @enderror"  placeholder="Email Pengaju">
-                    @error('email_pengaju')
-                        <span class="invalid-feedback">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="col">
-                    <input  wire:model= "nama_diajukan" type="text" class="form-control @error('nama_diajukan') is-invalid @enderror"  placeholder="Nama Pelaku">
-                    @error('nama_diajukan')
-                        <span class="invalid-feedback">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
-                </div>
+                <input type="hidden" name="" wire:model="pengajuanId">
                 <div class="col">
                     <input  wire:model= "summary" type="text" class="form-control @error('summary') is-invalid @enderror"  placeholder="Summary">
                     @error('summary')
@@ -70,10 +47,11 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">No</th>
-                <th scope="col">Nama Pengaju</th>
+                <!-- <th scope="col">Nama Pengaju</th>
                 <th scope="col">Email Pengaju</th>
-                <th scope="col">Nama Pelaku</th>
+                <th scope="col">Nama Pelaku</th> -->
                 <th scope="col">Summary</th>
+                <th scope="col">Oleh</th>
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
@@ -83,10 +61,11 @@
             <?php $no++; ?>
             <tr>
                 <th scope ="row">{{ $no }} </th>
-                <td>{{ $summary->nama_pengaju }}</td>
+                <!-- <td>{{ $summary->nama_pengaju }}</td>
                 <td>{{ $summary->email_pengaju }}</td>
-                <td>{{ $summary->nama_diajukan }}</td>
+                <td>{{ $summary->nama_diajukan }}</td> -->
                 <td>{{ $summary->summary }}</td>
+                <td>{{ $summary->created_by }}</td>
                 <td>
                    <button wire:click="findSummaryById({{ $summary->id}})" class = "btn btn-sm btn-info text-white">Edit</button>
                    <button wire:click="deleteSummary({{$summary->id}})" class = "btn btn-sm btn-danger text-white">Delete</button>

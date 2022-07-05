@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Livewire\DashboardAdmin;
 use App\Http\Livewire\DataJadwalKonsul;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Livewire\FormPengaduan;
 use App\Http\Livewire\DataPengajuancek;
 use App\Http\Livewire\FormPengajuancek;
 use App\Http\Livewire\HomeIndex;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('proses_regis', [AuthController::class, 'proses_regis'])->name('proses_regis');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/map', MapLocation::class);
 // Route::get('datapendamping', DataPendamping::class);
@@ -38,6 +42,7 @@ Route::get('/map', MapLocation::class);
 // Route::livewire('/edit/{id}', 'summary.edit')->name('summary.edit');
 
 Route::get('/summary', DataSummary::class);
+
 Route::get('/pendamping', DataPendamping::class);
 Route::get('/pengaduan', DataPengaduan::class);
 Route::get('/jadwalkonsul', DataJadwalKonsul::class);

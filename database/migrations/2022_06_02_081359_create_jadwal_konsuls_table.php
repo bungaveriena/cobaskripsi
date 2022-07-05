@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('jadwal_konsuls', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_korban');
-            $table->string('email_korban');
+            //$table->string('nama_korban');
+            //$table->string('email_korban');
             $table->foreignId('pengaduan_id');
-            //$table->foreignId('pendamping_id');
-            $table->string('hari');
+            $table->foreignId('pendamping_id');
+            //$table->string('hari');
             $table->date('tanggal');
             $table->time('pukul');
-            $table->string('pendamping');
+            //$table->string('pendamping');
             $table->string('kronologi');
             $table->string('keterangan');
             $table->timestamps();
