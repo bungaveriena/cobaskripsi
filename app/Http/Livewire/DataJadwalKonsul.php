@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\SendJadwal;
 use App\Models\JadwalKonsul;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Mailable;
