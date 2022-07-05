@@ -5,7 +5,7 @@
     </div>
     @endif
 
-<!-- kenapa div alert mau jalan kalo diatas doang ya -->
+    <!-- kenapa div alert mau jalan kalo diatas doang ya -->
 
 <body class="sub_page">
   <div class="hero_area">
@@ -186,11 +186,6 @@
         </div>
     </div>
     <div>
-    @if (session()->has('message'))
-    <div class="alert alert-success">
-        {{ session('message')}}
-    </div>
-    @endif
     <button type="submit" class="btn btn-sm btn-primary">Submit Data</button>
 </form>
 </div>

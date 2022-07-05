@@ -4,6 +4,8 @@
             {{ session('message')}}
         </div>
     @endif
+
+
 <form @if($isDetail)
         wire:submit.prevent="findPengaduanById"
     @endif>
@@ -34,8 +36,8 @@
                 @enderror
             </div>
             <div class="col">
-                <input  wire:model= "email" type="text" class="form-control @error('email') is-invalid @enderror"  placeholder="email pengaju">
-                @error('email')
+                <input  wire:model= "email_pengaju" type="text" class="form-control @error('email_pengaju') is-invalid @enderror"  placeholder="email pengaju">
+                @error('emial_pengaju')
                     <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
                     </span>
@@ -75,6 +77,9 @@
             </div>
         </div>
     </div>
+    <!-- @if($isDetail)
+        <button wire:click="makeSummary" type="button" class="btn btn-danger text-white">Make Summary</button>
+        @endif -->
 </form>
 
 
@@ -104,13 +109,14 @@
             <th scope ="row">{{ $no }} </th>
             <td>{{ $data->nama_pengaju }}</td>
             <td>{{ $data->alamat }}</td>
-            <td>{{ $data->email }}</td>
+            <td>{{ $data->email_pengaju }}</td>
             <td>{{ $data->asal_instansi }}</td>
             <td>{{ $data->nama_diajukan }}</td>
             <td>{{ $data->relasi }}</td>
             <td>{{ $data->keperluan }}</td>
             <td>
                <button wire:click="findPengajuanById({{ $data->id}})" class = "btn btn-sm btn-info text-white">Detail</button>
+               <button wire:click="makeSummary({{ $data->id}})" class = "btn btn-sm btn-info text-white">Make Summary</button>
                <button class = "btn btn-sm btn-danger text-white">Delete</button>
             </td>
         </tr>

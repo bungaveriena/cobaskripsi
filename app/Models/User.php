@@ -20,11 +20,12 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role_id',
         'password',
     ];
 
     public function roles(){
-        return $this->belongsTo(Role::class, 'roles');
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     public function summary(){

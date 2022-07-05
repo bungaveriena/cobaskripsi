@@ -90,8 +90,8 @@
                     @enderror
             </div>
             <div class="form-group col-md-6">
-                <input  wire:model= "email" type="text" class="form-control @error('email') is-invalid @enderror"  placeholder="email pengaju">
-                    @error('email')
+                <input  wire:model= "email_pengaju" type="text" class="form-control @error('email_pengaju') is-invalid @enderror"  placeholder="email pengaju">
+                    @error('email_pengaju')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
                         </span>

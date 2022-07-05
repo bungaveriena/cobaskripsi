@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class FormPengajuancek extends Component
 {
-    public $pengajuanId, $nama_pengaju, $alamat, $no_tlp, $email;
+    public $pengajuanId, $nama_pengaju, $alamat, $no_tlp, $email_pengaju;
     public $asal_instansi, $nama_diajukan;
     public $relasi,  $keperluan;
 
@@ -16,7 +16,7 @@ class FormPengajuancek extends Component
         $this->nama_pengaju = '';
         $this->alamat = '';
         $this->no_tlp = '';
-        $this->email = '';
+        $this->email_pengaju = '';
        
         $this->asal_instansi = '';
         $this->nama_diajukan = '';
@@ -30,12 +30,12 @@ class FormPengajuancek extends Component
         $this->validate([
             'nama_pengaju' => 'required',
             'alamat' => 'required',
-            'email' => 'required',
+            'email_pengaju' => 'required',
             //'no_tlp' => 'required',
             
             'asal_instansi' => 'required',
             'nama_diajukan' => 'required',
-            //'email_pengadu' => 'required',
+            //'email_pengaju_pengadu' => 'required',
             
 
             'relasi' => 'required',
@@ -47,12 +47,12 @@ class FormPengajuancek extends Component
         PengajuanCek::create([
             'nama_pengaju' => $this->nama_pengaju,
             'alamat' => $this->alamat,
-            'email' => $this->email,
+            'email_pengaju' => $this->email_pengaju,
             'no_tlp' => $this->no_tlp,
 
             'asal_instansi' => $this->asal_instansi,
             'nama_diajukan' => $this->nama_diajukan,
-            //'email_pengadu' => $this->email_pengadu,
+            //'email_pengaju_pengadu' => $this->email_pengaju_pengadu,
             
 
             'relasi' => $this->relasi,

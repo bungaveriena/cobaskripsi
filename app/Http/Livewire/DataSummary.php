@@ -16,6 +16,7 @@ class DataSummary extends Component
     public $summaryId, $nama_pengaju, $email_pengaju, $created_by, $nama_diajukan,  $summary;
     public $pengajuanId;
     //public $email; alamat yang dituju utk mengirim summary ke pengaju
+    public $isDetailPengajuan = false;
     public $isEdit = false;
     public $search;
 
@@ -30,15 +31,30 @@ class DataSummary extends Component
         
     }
 
-    public function findPengajuanById($id){
-        $pengajuan = PengajuanCek::findOrFail($id);
+    // public function findPengajuanById($id){
+    //     $pengajuan = PengajuanCek::findOrFail($id);
         
-        $this->pengajuanId = $id; 
-        $this->nama_pengaju = $pengajuan->nama_pengaju;
-        $this->nama_diajukan = $pengajuan->nama_diajukan;
-        $this->email_pengaju = $pengajuan->email_pengaju;
-        $this->isEdit = true;
+    //     $this->pengajuanId = $id; 
+    //     $this->nama_pengaju = $pengajuan->nama_pengaju;
+    //     $this->nama_diajukan = $pengajuan->nama_diajukan;
+    //     $this->email_pengaju = $pengajuan->email_pengaju;
+    //     $this->isDetailPengajuan = true;
 
+    // }
+    
+    protected $listerners = [
+        'makeSummary' => 'makeSummary'
+    ];
+
+
+
+    public function makeSummary($data_pengajuan){
+        $this->nama_pengaju = $data_pengajuan['nama_pengaju'];
+        $this->email_pengaju =$data_pengajuan['email_pengaju'];
+        $this->nama_diajukan = $data_pengajuan['nama_diajukan'];
+        $this->pengajuanId =$data_pengajuan['pengajuanId'];
+        
+        //$this->created_by =$data_pengajuan['nama_pengaju'];
     }
 
     public function saveSummary(){

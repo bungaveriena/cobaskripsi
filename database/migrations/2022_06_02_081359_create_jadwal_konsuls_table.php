@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_korban');
             $table->string('email_korban');
             $table->foreignId('pengaduan_id');
-            //$table->foreignId('pendamping_id');
+            $table->foreignId('pendamping_id');
             $table->string('hari');
             $table->date('tanggal');
             $table->time('pukul');
