@@ -37,7 +37,7 @@
             </div>
             <div class="col">
                 <input  wire:model= "email_pengaju" type="text" class="form-control @error('email_pengaju') is-invalid @enderror"  placeholder="email pengaju">
-                @error('emial_pengaju')
+                @error('email_pengaju')
                     <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
                     </span>

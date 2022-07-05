@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('role_id')->unsigned();
+            $table->foreignId('role_id')->default('2');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

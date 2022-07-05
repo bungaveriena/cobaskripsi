@@ -50,4 +50,4 @@ Route::get('/formpengaduan', FormPengaduan::class);
 Route::get('/pengajuancek', DataPengajuancek::class);
 Route::get('/formpengajuancek', FormPengajuancek::class);
 Route::get('/index', HomeIndex::class);
-Route::get('/pageadmin', DashboardAdmin::class);
+Route::get('/dashboard', DashboardAdmin::class);
