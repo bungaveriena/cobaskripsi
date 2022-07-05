@@ -20,7 +20,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Summary</label>
-                                <input type="file" class="form-control @error('summary') is-invalid @enderror" name="summary">
+                                <input type="text" class="form-control @error('summary') is-invalid @enderror" name="summary">
                                 @error('summary')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}

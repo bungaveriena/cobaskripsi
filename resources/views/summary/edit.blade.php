@@ -14,11 +14,10 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="{{ route('summary.update', $data_pengajuan->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('summary.update', $summary->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
-                            <div class="form-group">
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama yang diajukan</label>
                                 <input type="text" class="form-control @error('nama_diajukan') is-invalid @enderror" name="nama_diajukan" value = "{{ old('nama_diajukan', $summary->nama_diajukan)}}" placeholder="Masukkan email pengaju">
@@ -29,14 +28,16 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
                                 <label class="font-weight-bold">Summary</label>
-                                <input type="file" class="form-control @error('summary') is-invalid @enderror" name="{{ old('summary', $summary->summary) }}">
+                                <input type="text" class="form-control @error('summary') is-invalid @enderror" name="summary" value="{{ old('summary', $summary->summary) }}" placeholder="isi summary">
                                 @error('summary')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Oleh</label>

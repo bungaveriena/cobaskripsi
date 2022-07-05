@@ -40,11 +40,11 @@ class SummaryController extends Controller
         }
     }
 
-    public function edit(PengajuanCek $data_pengajuan){
-        return view('summary.edit', compact('data_pengajuan'));
+    public function edit(PengajuanCek $summary){
+        return view('summary.edit', compact('summary'));
     }
 
-    public function update(Request $request, PengajuanCek $data_pengajuan)
+    public function update(Request $request, PengajuanCek $summary)
     {
         $this->validate($request, [
             'summary'     => 'required',
@@ -52,14 +52,15 @@ class SummaryController extends Controller
         ]);
 
         //get data by ID
-        $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
+        // $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
+        $data_pengajuan = Summary::where('pengajuan_id', $summary->pengajuan_id);
+        
 
             $data_pengajuan->update([
                 'summary'     => $request->summary,
                 'created_by'   => $request->created_by
             ]);
-
-
+    
         if($data_pengajuan){
             //redirect dengan pesan sukses
             return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Diupdate!']);
@@ -68,6 +69,7 @@ class SummaryController extends Controller
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
+    
 
 
 

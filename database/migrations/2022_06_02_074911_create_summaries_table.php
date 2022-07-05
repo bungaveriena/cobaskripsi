@@ -21,7 +21,7 @@ return new class extends Migration
             // $table->string('email_pengaju');
             // $table->string('nama_diajukan');
             $table->string('summary');
-            //$table->string('created_by'); //session user login
+            $table->string('created_by'); //session user login
             $table->timestamps();
         });
     }
