@@ -7,6 +7,7 @@ use App\Models\Summary;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendSummary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SummaryController extends Controller
 {
@@ -33,16 +34,17 @@ class SummaryController extends Controller
             'created_by'  => $request->created_by
         ]);
 
-        if($summary){
+        if ($summary) {
             //redirect dengan pesan sukses
             return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
-    public function edit(PengajuanCek $summary){
+    public function edit(PengajuanCek $summary)
+    {
         return view('summary.edit', compact('summary'));
     }
 
@@ -54,31 +56,28 @@ class SummaryController extends Controller
         ]);
 
         //get data by ID
-        // $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
-        $data_pengajuan = Summary::where('pengajuan_id', $summary->pengajuan_id);
-        
+        $id_pengajuan = $summary->getKey();
 
-            $data_pengajuan->update([
-                'summary'     => $request->summary,
-                'created_by'   => $request->created_by
-            ]);
-    
-        if($data_pengajuan){
+        $response = new Summary();
+        $response->pengajuan_id = $id_pengajuan;
+        $response->summary = $request->summary;
+        $response->created_by = $request->created_by;
+        $response->user_id = Auth::id();
+        $response->save();
+
+        if ($response) {
             //redirect dengan pesan sukses
             return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Diupdate!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
 
-    public function sendSummary(){
+    public function sendSummary()
+    {
         $summary = Summary::findOrFail($this->summaryId);
-        
+
         Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
     }
-    
-
-
-
 }
