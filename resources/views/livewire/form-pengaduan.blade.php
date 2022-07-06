@@ -168,7 +168,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Bukti</label>
-            <input  wire:model= "bukti" type="text" class="form-control @error('bukti') is-invalid @enderror"  placeholder="bukti">
+            <input  wire:model= "bukti" type="file" class="form-control @error('bukti') is-invalid @enderror"  placeholder="bukti">
             @error('bukti')
                 <span class="invalid-feedback">
                     <strong>{{$message}}</strong>

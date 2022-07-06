@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Pengaduan;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class FormPengaduan extends Component
 {
+    use WithFileUploads;
 
     public $pengaduanId, $nama_korban, $alamat_korban, $email_korban, $notlp_korban;
     public $pembuat_pengaduan, $relasi_korban;
@@ -53,6 +56,14 @@ class FormPengaduan extends Component
         ]);
 
 
+        $buktiName = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
+
+        Storage::putFile(
+            'public/buktipengaduan',
+            $this->bukti,
+            $buktiName);
+
+
         Pengaduan::create([
             'nama_korban' => $this->nama_korban,
             'alamat_korban' => $this->alamat_korban,
@@ -69,7 +80,7 @@ class FormPengaduan extends Component
             'email_pelaku' => $this->email_pelaku,
             'notlp_pelaku' => $this->notlp_pelaku,
 
-            'bukti' => $this->bukti,
+            'bukti' => $this->buktiName,
             'bantuan' => $this->bantuan
         ]);
 

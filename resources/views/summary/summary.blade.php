@@ -41,6 +41,7 @@
                                     <td>{{ $summary->created_by }}</td>
                                     <td>
                                     
+                                    <button type="submit" class = "btn btn-sm btn-warning text-white">Kirim Email</button>
                                     </td>
                                 </tr>
                                 @endforeach

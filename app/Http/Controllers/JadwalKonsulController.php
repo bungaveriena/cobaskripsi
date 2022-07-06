@@ -73,7 +73,6 @@ class JadwalKonsulController extends Controller
         //$response->pendamping = $request->pendamping_id;
         $response->kronologi = $request->kronologi;
         $response->keterangan = $request->keterangan;
-        // $response->created_by = $request->created_by;
         // $response->user_id = Auth::id();
         $response->save();
 

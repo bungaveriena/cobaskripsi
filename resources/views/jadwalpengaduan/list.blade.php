@@ -41,10 +41,14 @@
                                     <td>{{ $data->notlp_korban }}</td>
                                     <td>{{ $data->pembuat_pengaduan }}</td>
                                     <td>{{ $data->nama_pelaku }}</td>
-                                    <td>{{ $data->bukti }}</td>
+                                    <td>
+                                        <embed name="plugin" src="{{ Storage::url('public/buktipengaduan/').$data->bukti }}" type="application/pdf">
+                                        <img src="{{ Storage::url('public/buktipengaduan/').$data->bukti }}" class="rounded" style="width: 150px">
+                                    </td>
                                     <td>{{ $data->bantuan }}</td>
                                     <td>
-                                    <button wire:click="findPengaduanById({{ $data->id}})" class = "btn btn-sm btn-info text-white">Detail</button>
+                                    <a href="{{ route('datajadwalkonsul.edit', $data->id) }}" class="btn btn-sm btn-primary">buat jadwal</a>
+                                    <!-- <button wire:click="findPengaduanById({{ $data->id}})" class = "btn btn-sm btn-info text-white">Detail</button> -->
                                     <button class = "btn btn-sm btn-danger text-white">Delete</button>
                                     </td>
                                 </tr>
