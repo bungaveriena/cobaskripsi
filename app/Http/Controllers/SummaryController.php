@@ -77,17 +77,24 @@ class SummaryController extends Controller
         }
     }
 
-    // public function listSummary(){
-    //     $summaries = Summary::latest()->paginate(10);
-    //     return view('summary.summary', compact('summaries'));
-    // }
+    public function listSummary(){
+        $summaries = Summary::latest()->paginate(10);
+        return view('summary.summary', compact('summaries'));
+    }
 
-    // public function sendSummary()
-    // {
-    //     $summary = Summary::findOrFail($this->summaryId);
+    public function sendSummary()
+    {
+        $summary = Summary::findOrFail($this->id);
+
+        // $summary = [
+        //     'nama_pengaju' => $nama_pengaju,
+        //     'email_pengaju' => $email_pengaju,
+        //     'nama_diajukan' => $nama_diajukan,
+        //     'summary' => $summary
+        //   ];
         
-    //     Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
-    // }
+        Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
+    }
     
 
 

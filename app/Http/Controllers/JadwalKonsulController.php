@@ -55,6 +55,7 @@ class JadwalKonsulController extends Controller
         $this->validate($request, [
             'tanggal' => 'required',
             'pukul'=> 'required',
+            //'pendamping'=> 'required',
             'kronologi'=> 'required',
             'keterangan'=> 'required'
         ]);
@@ -67,11 +68,11 @@ class JadwalKonsulController extends Controller
 
         $response = new $jadwal();
         $response->pengaduan_id = $id_pengaduan;
-        $response->summary = $request->summary;
         $response->tanggal = $request->tanggal;
-        $response->tanggal = $request->pukul;
-        $response->tanggal = $request->kronologi;
-        $response->tanggal = $request->keterangan;
+        $response->pukul = $request->pukul;
+        //$response->pendamping = $request->pendamping_id;
+        $response->kronologi = $request->kronologi;
+        $response->keterangan = $request->keterangan;
         // $response->created_by = $request->created_by;
         // $response->user_id = Auth::id();
         $response->save();
@@ -79,6 +80,7 @@ class JadwalKonsulController extends Controller
             $data_pengaduan->update([
                 'tanggal' => $request->tanggal,
                 'pukul'=> $request->pukul,
+                //'pendamping'=> $request->pendamping,
                 'kronologi'=> $request->kronologi,
                 'keterangan'=> $request->keterangan
             ]);

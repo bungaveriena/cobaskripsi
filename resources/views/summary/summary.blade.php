@@ -40,13 +40,7 @@
                                     <td>{{ $summary->summary }}</td>
                                     <td>{{ $summary->created_by }}</td>
                                     <td>
-                                    <!-- <form onsubmit="return confirm('Apakah Anda Yakin Ingin Mengirim Email ?');" action="{{ route('summary.sendSummary', $summary->id) }}" method="POST">
-                                            @csrf
-                                            @method('POST')
-                                            <button type="submit" class="btn btn-sm btn-danger">Send Summary</button>
-                                        </form> -->
-                                    <!-- <a href="{{ route('summary.sendSummary', $summary->id) }}" class="btn btn-sm btn-primary">Send Email</a> -->
-                                    <!-- <buttontype="submit" class = "btn btn-sm btn-danger text-white">Delete</button> -->
+                                    
                                     </td>
                                 </tr>
                                 @endforeach
