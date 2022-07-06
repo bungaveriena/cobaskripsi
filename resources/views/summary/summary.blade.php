@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>List Pengajuan</title>
+    <title>List Summary</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -21,30 +21,31 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Pengaju</th>
-                                    <th scope="col">Alamat Pengaju</th>
                                     <th scope="col">Email Pengaju</th>
-                                    <th scope="col">Asal Instansi</th>
                                     <th scope="col">Nama yang diajukan</th>
-                                    <th scope="col">Relasi</th>
-                                    <th scope="col">Keperluan</th>
+                                    <th scope="col">Isi Summary</th>
+                                    <th scope="col">Penulis</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 0; ?>
-                                @foreach($data_pengajuan_ceks as $data)
+                                @foreach($summaries as $summary)
                                 <?php $no++; ?>
                                 <tr>
                                     <th scope ="row">{{ $no }} </th>
-                                    <td>{{ $data->nama_pengaju }}</td>
-                                    <td>{{ $data->alamat }}</td>
-                                    <td>{{ $data->email_pengaju }}</td>
-                                    <td>{{ $data->asal_instansi }}</td>
-                                    <td>{{ $data->nama_diajukan }}</td>
-                                    <td>{{ $data->relasi }}</td>
-                                    <td>{{ $data->keperluan }}</td>
+                                    <td>{{ $summary->nama_pengaju }}</td>
+                                    <td>{{ $summary->email_pengaju }}</td>
+                                    <td>{{ $summary->nama_diajukan }}</td>
+                                    <td>{{ $summary->summary }}</td>
+                                    <td>{{ $summary->created_by }}</td>
                                     <td>
-                                    <a href="{{ route('summary.edit', $data->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    <!-- <form onsubmit="return confirm('Apakah Anda Yakin Ingin Mengirim Email ?');" action="{{ route('summary.sendSummary', $summary->id) }}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="btn btn-sm btn-danger">Send Summary</button>
+                                        </form> -->
+                                    <!-- <a href="{{ route('summary.sendSummary', $summary->id) }}" class="btn btn-sm btn-primary">Send Email</a> -->
                                     <!-- <buttontype="submit" class = "btn btn-sm btn-danger text-white">Delete</button> -->
                                     </td>
                                 </tr>
@@ -56,8 +57,6 @@
             </div>
         </div>
     </div>
-
-    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Summary extends Model
 {
     protected $table = "summaries";
-    protected $fillable = ['summary', 'created_by'];
+    protected $fillable = ['summary', 'created_by', 'pengajuan_id', 'user_id'];
     use HasFactory;
 
     public function creator()

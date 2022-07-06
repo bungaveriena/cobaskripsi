@@ -7,6 +7,7 @@ use App\Models\Summary;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendSummary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SummaryController extends Controller
 {
@@ -14,6 +15,9 @@ class SummaryController extends Controller
     {
         $data_pengajuan_ceks = PengajuanCek::latest()->paginate(10);
         return view('summary.index', compact('data_pengajuan_ceks'));
+
+        // $summaries = Summary::latest()->paginate(10);
+        // return view('summary.summary', compact('summaries'));
     }
 
     public function create()
@@ -57,26 +61,40 @@ class SummaryController extends Controller
         // $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
         $data_pengajuan = Summary::where('pengajuan_id', $summary->pengajuan_id);
         
+        $id_pengajuan = $summary->getKey();
+
+        $response = new Summary();
+        $response->pengajuan_id = $id_pengajuan;
+        $response->summary = $request->summary;
+        $response->created_by = $request->created_by;
+        $response->user_id = Auth::id();
+        $response->save();
 
             $data_pengajuan->update([
                 'summary'     => $request->summary,
                 'created_by'   => $request->created_by
             ]);
     
-        if($data_pengajuan){
+        if($response){
             //redirect dengan pesan sukses
-            return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('summary.summary')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
 
-    public function sendSummary(){
-        $summary = Summary::findOrFail($this->summaryId);
+    // public function listSummary(){
+    //     $summaries = Summary::latest()->paginate(10);
+    //     return view('summary.summary', compact('summaries'));
+    // }
+
+    // public function sendSummary()
+    // {
+    //     $summary = Summary::findOrFail($this->summaryId);
         
-        Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
-    }
+    //     Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
+    // }
     
 
 

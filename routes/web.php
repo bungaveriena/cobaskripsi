@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JadwalKonsulController;
 use App\Http\Controllers\SummaryController;
 use App\Http\Livewire\DashboardAdmin;
 use App\Http\Livewire\DataJadwalKonsul;
@@ -45,10 +46,14 @@ Route::get('/map', MapLocation::class);
 //Route::get('/summary', DataSummary::class);
 
 Route::resource('/summary', SummaryController::class);
+Route::get('/list', [SummaryController::class, 'listSummary'])->name('listSummary');
+// Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('sendSummary'); untuk button send email di summary.summary
+
+Route::get('/datajadwalkonsul', JadwalKonsulController::class);
 
 Route::get('/pendamping', DataPendamping::class);
 Route::get('/pengaduan', DataPengaduan::class);
-Route::get('/jadwalkonsul', DataJadwalKonsul::class);
+//Route::get('/jadwalkonsul', DataJadwalKonsul::class);
 Route::get('/formpengaduan', FormPengaduan::class);
 Route::get('/pengajuancek', DataPengajuancek::class);
 Route::get('/formpengajuancek', FormPengajuancek::class);
