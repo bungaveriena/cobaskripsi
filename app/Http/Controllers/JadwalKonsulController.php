@@ -39,16 +39,21 @@ class JadwalKonsulController extends Controller
 
         if($jadwal){
             //redirect dengan pesan sukses
-            return redirect()->route('jadwalpengaduan.index')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('datajadwalkonsul.index')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('jadwalpengaduan.index')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('datajadwalkonsul.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
     public function edit(Pengaduan $jadwal){
         return view('jadwalpengaduan.edit', compact('jadwal'));
     }
+
+    // public function edit(PengajuanCek $summary)
+    // {
+    //     return view('summary.edit', compact('summary'));
+    // }
 
     public function update(Request $request, Pengaduan $jadwal)
     {
@@ -62,7 +67,7 @@ class JadwalKonsulController extends Controller
 
         //get data by ID
         // $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
-        $data_pengaduan = Pengaduan::where('pengaduan_id', $jadwal->pengaduan_id);
+        //$data_pengaduan = Pengaduan::where('pengaduan_id', $jadwal->pengaduan_id);
         
         $id_pengaduan = $jadwal->getKey();
 
@@ -75,14 +80,6 @@ class JadwalKonsulController extends Controller
         $response->keterangan = $request->keterangan;
         // $response->user_id = Auth::id();
         $response->save();
-
-            $data_pengaduan->update([
-                'tanggal' => $request->tanggal,
-                'pukul'=> $request->pukul,
-                //'pendamping'=> $request->pendamping,
-                'kronologi'=> $request->kronologi,
-                'keterangan'=> $request->keterangan
-            ]);
     
         if($response){
             //redirect dengan pesan sukses
