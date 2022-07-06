@@ -37,16 +37,17 @@ class SummaryController extends Controller
             'created_by'  => $request->created_by
         ]);
 
-        if($summary){
+        if ($summary) {
             //redirect dengan pesan sukses
             return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
-    public function edit(PengajuanCek $summary){
+    public function edit(PengajuanCek $summary)
+    {
         return view('summary.edit', compact('summary'));
     }
 
@@ -58,9 +59,6 @@ class SummaryController extends Controller
         ]);
 
         //get data by ID
-        // $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
-        $data_pengajuan = Summary::where('pengajuan_id', $summary->pengajuan_id);
-        
         $id_pengajuan = $summary->getKey();
 
         $response = new Summary();
@@ -70,15 +68,10 @@ class SummaryController extends Controller
         $response->user_id = Auth::id();
         $response->save();
 
-            $data_pengajuan->update([
-                'summary'     => $request->summary,
-                'created_by'   => $request->created_by
-            ]);
-    
-        if($response){
+        if ($response) {
             //redirect dengan pesan sukses
-            return redirect()->route('summary.summary')->with(['success' => 'Data Berhasil Diupdate!']);
-        }else{
+            return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Diupdate!']);
+        } else {
             //redirect dengan pesan error
             return redirect()->route('summary.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
