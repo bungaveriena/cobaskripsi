@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use App\Models\Summary;
 use App\Models\PengajuanCek;
+use App\Models\Summary;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;

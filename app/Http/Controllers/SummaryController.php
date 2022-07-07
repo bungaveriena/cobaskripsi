@@ -70,8 +70,7 @@ class SummaryController extends Controller
 
         if ($response) {
             // kirim email ke user yang melakukan pengajuan cek
-            Mail::to($summary->email_pengaju)->send(new SendSummary($summary));
-            
+            Mail::to($summary->email_pengaju)->send(new SendSummary($summary));          
             //redirect dengan pesan sukses
             return redirect()->route('summary.index')->with(['success' => 'Data Berhasil Diupdate!']);
         } else {
@@ -95,10 +94,10 @@ class SummaryController extends Controller
         //     'nama_diajukan' => $nama_diajukan,
         //     'summary' => $summary
         //   ];
-        
+
         Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
     }
-    
+
 
 
 
