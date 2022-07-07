@@ -71,7 +71,7 @@
 
                             
 
-                            <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
+                            <button type="submit" class="btn btn-md btn-primary">Simpan dan Kirim Jadwal</button>
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>
 
                         </form>

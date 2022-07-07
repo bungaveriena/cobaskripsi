@@ -6,6 +6,8 @@ use App\Models\JadwalKonsul;
 use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendJadwal;
+use Illuminate\Support\Facades\Storage;
+use Response;
 use Illuminate\Http\Request;
 
 class JadwalKonsulController extends Controller
@@ -50,10 +52,6 @@ class JadwalKonsulController extends Controller
         return view('jadwalpengaduan.edit', compact('jadwal'));
     }
 
-    // public function edit(PengajuanCek $summary)
-    // {
-    //     return view('summary.edit', compact('summary'));
-    // }
 
     public function update(Request $request, Pengaduan $jadwal)
     {
@@ -66,12 +64,10 @@ class JadwalKonsulController extends Controller
         ]);
 
         //get data by ID
-        // $data_pengajuan = PengajuanCek::findOrFail($data_pengajuan->id);
-        //$data_pengaduan = Pengaduan::where('pengaduan_id', $jadwal->pengaduan_id);
         
         $id_pengaduan = $jadwal->getKey();
 
-        $response = new $jadwal();
+        $response = new JadwalKonsul();
         $response->pengaduan_id = $id_pengaduan;
         $response->tanggal = $request->tanggal;
         $response->pukul = $request->pukul;
@@ -82,6 +78,8 @@ class JadwalKonsulController extends Controller
         $response->save();
     
         if($response){
+            // kirim email yang terdaftar di korban pada form pengaduan
+            Mail::to($jadwal->email_korban)->send(new SendJadwal($jadwal)); 
             //redirect dengan pesan sukses
             return redirect()->route('jadwalpengaduan.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
@@ -90,15 +88,30 @@ class JadwalKonsulController extends Controller
         }
     }
 
-    // public function listJadwal(){
-    //     $jadwal_konsuls = JadwalKonsul::latest()->paginate(10);
-    //     return view('jadwalpengaduan.index', compact('jadwal_konsuls'));
+    public function listJadwal(){
+        $jadwal_konsuls = JadwalKonsul::latest()->paginate(10);
+        return view('jadwalpengaduan.index', compact('jadwal_konsuls'));
+    }
+
+    //download file bukti
+    // function getFile($filename){
+    //     $files = Storage::files("public");
+    //     $fileBukti=array();
+    //     foreach ($files as $key => $value) {
+    //         $value= str_replace("public/","",$value);
+    //         array_push($fileBukti,$value);
+    //     }
+    // return view('show', ['images' => $images]);
+    //     $file=Storage::disk('public')->get($filename);
+  
+    //     return (new Response($file, 200))
+    //           ->header('Content-Type', 'image/jpeg');
     // }
 
-    // public function sendJadwal()
-    // {
-    //     $jadwal = JadwalKonsul::findOrFail($this->summaryId);
+    public function sendJadwal()
+    {
+        $jadwal = JadwalKonsul::findOrFail($this->Id);
         
-    //     Mail::to($jadwal->data_pengajuan->email_pengaju)->send(new SendJadwal($summary));
-    // }
+        Mail::to($jadwal->data_pengajuan->email_pengaju)->send(new SendJadwal($jadwal));
+    }
 }

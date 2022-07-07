@@ -42,8 +42,7 @@
                                     <td>{{ $data->pembuat_pengaduan }}</td>
                                     <td>{{ $data->nama_pelaku }}</td>
                                     <td>
-                                        <embed name="plugin" src="{{ Storage::url('public/buktipengaduan/').$data->bukti }}" type="application/pdf">
-                                        <img src="{{ Storage::url('public/buktipengaduan/').$data->bukti }}" class="rounded" style="width: 150px">
+                                        <a href="public/buktipengaduan/{{ $data->bukti  }}"><button class="btn btn-success" type="button">View</button>
                                     </td>
                                     <td>{{ $data->bantuan }}</td>
                                     <td>

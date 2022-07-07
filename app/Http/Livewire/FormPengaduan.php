@@ -51,17 +51,27 @@ class FormPengaduan extends Component
             //'email_pelaku' => 'required',
             'notlp_pelaku' => 'required',
 
-            'bukti' => 'required',
+            'bukti' => 'required|mimes:doc,docx,pdf,jpg,jpeg,png',
             'bantuan' => 'required'
         ]);
 
+         $bukti = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
 
-        $buktiName = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
-
-        Storage::putFile(
+        Storage::putFileAs(
             'public/buktipengaduan',
             $this->bukti,
-            $buktiName);
+            $bukti
+        );
+
+        // $buktiFile = $this->bukti->extension();
+        // Storage::putFile(
+        //      'public/buktipengaduan',
+        //      $this->bukti,
+        //     );
+
+        // laravel crud upload
+        // $bukti = $this->bukti->file('bukti');
+        // $bukti->storeAs('public/buktipengaduan', $this->bukti);
 
 
         Pengaduan::create([
@@ -80,7 +90,7 @@ class FormPengaduan extends Component
             'email_pelaku' => $this->email_pelaku,
             'notlp_pelaku' => $this->notlp_pelaku,
 
-            'bukti' => $this->buktiName,
+            'bukti' => $this->bukti,
             'bantuan' => $this->bantuan
         ]);
 
