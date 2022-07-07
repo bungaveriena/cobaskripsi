@@ -66,12 +66,12 @@
                         </tr>
                         <tr>
                             <td>
-                                Nama :
+                                Nama Yang Diajukan :
                             </td>
                         </tr>
                         <tr>
                             <td>
-                            {{ $nama_pelaku}}
+                            {{ $nama_diajukan}}
                             </td>
                         </tr>
                         <tr>
