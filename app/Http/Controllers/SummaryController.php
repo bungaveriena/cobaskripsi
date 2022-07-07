@@ -88,12 +88,6 @@ class SummaryController extends Controller
     {
         $summary = Summary::findOrFail($this->id);
 
-        // $summary = [
-        //     'nama_pengaju' => $nama_pengaju,
-        //     'email_pengaju' => $email_pengaju,
-        //     'nama_diajukan' => $nama_diajukan,
-        //     'summary' => $summary
-        //   ];
 
         Mail::to($summary->data_pengajuan->email_pengaju)->send(new SendSummary($summary));
     }

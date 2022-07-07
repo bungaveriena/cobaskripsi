@@ -55,13 +55,15 @@ class FormPengaduan extends Component
             'bantuan' => 'required'
         ]);
 
-         $bukti = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
+        //  $bukti = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
 
-        Storage::putFileAs(
-            'public/buktipengaduan',
-            $this->bukti,
-            $bukti
-        );
+        // Storage::putFileAs(
+        //     'public/buktipengaduan',
+        //     $this->bukti,
+        //     $bukti
+        // );
+
+        $bukti = $this->bukti->store('buktipengaduan','public');
 
         // $buktiFile = $this->bukti->extension();
         // Storage::putFile(

@@ -42,12 +42,13 @@
                                     <td>{{ $data->pembuat_pengaduan }}</td>
                                     <td>{{ $data->nama_pelaku }}</td>
                                     <td>
-                                        <a href="public/buktipengaduan/{{ $data->bukti  }}"><button class="btn btn-success" type="button">View</button>
+                                        <!-- <a href="public/buktipengaduan/{{ $data->bukti  }}"><button class="btn btn-success" type="button">View</button> -->
+                                        <!-- <a href="public/buktipengaduan/{{$data->bukti}}" download="{{$data->bukti}}"><button class="btn btn-success" type="button">View</button> -->
+                                        <a href="Storage::url($data->bukti);" download="{{$data->bukti}}"><button class="btn btn-success" type="button">View</button>
                                     </td>
                                     <td>{{ $data->bantuan }}</td>
                                     <td>
                                     <a href="{{ route('datajadwalkonsul.edit', $data->id) }}" class="btn btn-sm btn-primary">buat jadwal</a>
-                                    <!-- <button wire:click="findPengaduanById({{ $data->id}})" class = "btn btn-sm btn-info text-white">Detail</button> -->
                                     <button class = "btn btn-sm btn-danger text-white">Delete</button>
                                     </td>
                                 </tr>

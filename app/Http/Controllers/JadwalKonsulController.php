@@ -101,7 +101,7 @@ class JadwalKonsulController extends Controller
     //         $value= str_replace("public/","",$value);
     //         array_push($fileBukti,$value);
     //     }
-    // return view('show', ['images' => $images]);
+    // return view('show', ['bukti' => $bukti]);
     //     $file=Storage::disk('public')->get($filename);
   
     //     return (new Response($file, 200))
