@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalKonsul;
 use App\Models\Pengaduan;
+use app\Models\Pendamping;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendJadwal;
 use Illuminate\Support\Facades\Storage;
@@ -47,13 +48,12 @@ class JadwalKonsulController extends Controller
             return redirect()->route('datajadwalkonsul.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
-
-    public function edit(Pengaduan $jadwal){
-        return view('jadwalpengaduan.edit', compact('jadwal'));
+    public function edit(Pengaduan $datajadwalkonsul){
+        return view('jadwalpengaduan.edit', compact('datajadwalkonsul'));
     }
 
 
-    public function update(Request $request, Pengaduan $jadwal)
+    public function update(Request $request, Pengaduan $datajadwalkonsul)
     {
         $this->validate($request, [
             'tanggal' => 'required',
@@ -65,7 +65,7 @@ class JadwalKonsulController extends Controller
 
         //get data by ID
         
-        $id_pengaduan = $jadwal->getKey();
+        $id_pengaduan = $datajadwalkonsul->getKey();
 
         $response = new JadwalKonsul();
         $response->pengaduan_id = $id_pengaduan;
@@ -79,7 +79,7 @@ class JadwalKonsulController extends Controller
     
         if($response){
             // kirim email yang terdaftar di korban pada form pengaduan
-            Mail::to($jadwal->email_korban)->send(new SendJadwal($jadwal)); 
+            Mail::to($datajadwalkonsul->email_korban)->send(new SendJadwal($datajadwalkonsul)); 
             //redirect dengan pesan sukses
             return redirect()->route('jadwalpengaduan.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{

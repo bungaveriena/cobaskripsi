@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JadwalKonsulController;
+use App\Http\Controllers\PengaduanKonsulController;
 use App\Http\Controllers\SummaryController;
 use App\Http\Livewire\DashboardAdmin;
 use App\Http\Livewire\DataJadwalKonsul;
@@ -51,6 +52,7 @@ Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('
 
 //Route::get('/datajadwalkonsul', JadwalKonsulController::class);
 Route::resource('/datajadwalkonsul', JadwalKonsulController::class);
+//Route::resource('/pengaduankonsul', PengaduanKonsulController::class);
 
 Route::get('/pendamping', DataPendamping::class);
 Route::get('/pengaduan', DataPengaduan::class);

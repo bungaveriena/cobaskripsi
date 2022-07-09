@@ -28,6 +28,15 @@ class SendJadwal extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.TemplateEmailJadwal.blade.php');
+        return $this->view('emails.TemplateEmailJadwal.blade.php')
+                            ->with([
+
+                                'nama_korban' =>$this->datajadwalkonsul->nama_korban,
+                                'tanggal' =>$this->datajadwalkonsul->datajadwalkonsul->tanggal,
+                                'pukul' =>$this->datajadwalkonsul->datajadwalkonsul->pukul,
+                                'keterangan' =>$this->datajadwalkonsul->datajadwalkonsul->keterangan,
+                                //'pendamping'=>$this->datajadwalkonsul->pendamping,
+                                'summary'=>$this->summary->summary->summary,
+                            ]);
     }
 }

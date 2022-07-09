@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 use Livewire\Component;
 use App\Models\Location;
+use App\Models\User;
+
 
 class DashboardAdmin extends Component
 {
@@ -15,8 +17,17 @@ class DashboardAdmin extends Component
 
     public $locationId, $long, $lat, $nama_pelaku, $keterangan, $alamat, $image;
     public $geoJson;
+    public $userId, $name, $email, $password, $role_id;
     public $imageUrl;
     public $isEdit = false;
+
+    // private function loadUser(){
+    //     $users = User::all();
+
+    //     foreach($users as $user){
+
+    //     }
+    // }
     
     private function loadLocations(){
         $locations = Location::orderBy('created_at', 'asc')->get();
@@ -103,72 +114,83 @@ class DashboardAdmin extends Component
 
     }
 
-    public function updateLocation(){
+    public function saveUser(){
         $this->validate([
-            'long' => 'required',
-            'lat' => 'required',
-            'nama_pelaku' => 'required',
-            'alamat' => 'required',
-            'keterangan' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'role_id' => 'required',
             
         ]);
 
-        $location = Location::findOrFail($this->locationId);
 
-        if($this->image){
-            $imageName = md5($this->image.microtime()).'.'.$this->image->extension();
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'role_id' => $this->role_id
+        ]);
 
-            Storage::putFileAs(
-                'public/images',
-                $this->image,
-                $imageName
-            );
 
-            $updateData = [
-                'nama_pelaku' => $this->nama_pelaku,
-                'alamat' => $this->alamat,
-                'keterangan' => $this->keterangan,
-                'image' => $imageName,
-            ];
-        }else{
-            $updateData = [
-                'nama_pelaku' => $this->nama_pelaku,
-                'alamat' => $this->alamat,
-                'keterangan' => $this->keterangan,
-            ];
-        }
 
-        $location->update($updateData);
-
-        $this->imageUrl = "";
+        session()->flash('message', 'Data tersimpan');
         $this->clearForm();
-        $this->loadLocations();
-        $this->dispatchBrowserEvent('updateLocation', $this->geoJson);
     }
 
-    public function deleteLocation(){
-        $location = Location::findOrFail($this->locationId);
-        $location->delete();
+    public function findUserById($id){
+        $user = User::findOrFail($id);
+        
+        $this->userId = $id; 
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->role_id = $user->role_id;
+        $this->isEdit = true;
 
-        $this->imageUrl = "";
+    }
+
+    public function updateUser(){
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'role_id' => 'required',
+            
+        ]);
+
+        $user = User::findOrFail($this->userId);
+
+            $updateData = [
+                'name' => $this->name,
+                'email' => $this->email,
+                'role_id' => $this->role_id
+            ];
+        
+
+        $user->update($updateData);
+
         $this->clearForm();
-        $this->isEdit = false;
-        $this->dispatchBrowserEvent('deleteLocation', $location->id);
+    }
+
+    public function deleteUser($id){
+        if($id) {
+            $user = User::find($id);
+            $user->delete();
+            session()->flash('message', 'Data terhapus');
+        }
+
+
     }
 
     public function datapengajuan()
     {
-        return redirect()->to('/pengajuancek');
+        return redirect()->to('/summary');
     }
 
     public function datapengaduan()
     {
-        return redirect()->to('/pengaduan');
+        return redirect()->to('/datajadwalkonsul');
     }
 
     public function datasummary()
     {
-        return redirect()->to('/summary');
+        return redirect()->to('/list');
     }
 
     public function datapendamping()
@@ -184,7 +206,9 @@ class DashboardAdmin extends Component
     public function render()
     {
         $this->loadLocations();
-        return view('livewire.dashboard-admin');
+        return view('livewire.dashboard-admin',[
+            'users' => User::latest()->get()
+        ]);
     }
 
     // public function render()

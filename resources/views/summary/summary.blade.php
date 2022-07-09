@@ -34,9 +34,9 @@
                                 <?php $no++; ?>
                                 <tr>
                                     <th scope ="row">{{ $no }} </th>
-                                    <td>{{ $summary->nama_pengaju }}</td>
-                                    <td>{{ $summary->email_pengaju }}</td>
-                                    <td>{{ $summary->nama_diajukan }}</td>
+                                    <td>{{ $summary->pengajuan->nama_pengaju }}</td>
+                                    <td>{{ $summary->pengajuan->email_pengaju }}</td>
+                                    <td>{{ $summary->pengajuan->nama_diajukan }}</td>
                                     <td>{{ $summary->summary }}</td>
                                     <td>{{ $summary->created_by }}</td>
                                     <td>

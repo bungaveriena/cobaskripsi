@@ -34,47 +34,31 @@ class FormPengaduan extends Component
         $this->bantuan = '';
     }
 
-    public function savePengaduan(){
-        $this->validate([
+    public function saveData(){
+            $this->validate([
             'nama_korban' => 'required',
             'alamat_korban' => 'required',
             'notlp_korban' => 'required',
-            //'email_korban' => 'required',
             
             'pembuat_pengaduan' => 'required',
             'relasi_korban' => 'required',
-            //'email_pengadu' => 'required',
             
 
             'nama_pelaku' => 'required',
             'alamat_pelaku' => 'required',
-            //'email_pelaku' => 'required',
             'notlp_pelaku' => 'required',
 
-            'bukti' => 'required|mimes:doc,docx,pdf,jpg,jpeg,png',
+            'bukti' => 'required',
             'bantuan' => 'required'
         ]);
 
-        //  $bukti = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
+        $fileName = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
 
-        // Storage::putFileAs(
-        //     'public/buktipengaduan',
-        //     $this->bukti,
-        //     $bukti
-        // );
-
-        $bukti = $this->bukti->store('buktipengaduan','public');
-
-        // $buktiFile = $this->bukti->extension();
-        // Storage::putFile(
-        //      'public/buktipengaduan',
-        //      $this->bukti,
-        //     );
-
-        // laravel crud upload
-        // $bukti = $this->bukti->file('bukti');
-        // $bukti->storeAs('public/buktipengaduan', $this->bukti);
-
+        Storage::putFileAs(
+            'public/filebukti',
+            $this->bukti,
+            $fileName
+        );
 
         Pengaduan::create([
             'nama_korban' => $this->nama_korban,
@@ -84,21 +68,88 @@ class FormPengaduan extends Component
 
             'pembuat_pengaduan' => $this->pembuat_pengaduan,
             'relasi_korban' => $this->relasi_korban,
-            //'email_pengadu' => $this->email_pengadu,
-            
-
             'nama_pelaku' => $this->nama_pelaku,
             'alamat_pelaku' => $this->alamat_pelaku,
             'email_pelaku' => $this->email_pelaku,
             'notlp_pelaku' => $this->notlp_pelaku,
-
-            'bukti' => $this->bukti,
-            'bantuan' => $this->bantuan
+        
+            'bantuan' => $this->bantuan,
+            'bukti' => $fileName,
         ]);
 
         session()->flash('message', 'Data tersimpan');
         $this->clearForm();
     }
+
+    // public function savePengaduan(){
+    //     $this->validate([
+    //         'nama_korban' => 'required',
+    //         'alamat_korban' => 'required',
+    //         'notlp_korban' => 'required',
+    //         //'email_korban' => 'required',
+            
+    //         'pembuat_pengaduan' => 'required',
+    //         'relasi_korban' => 'required',
+    //         //'email_pengadu' => 'required',
+            
+
+    //         'nama_pelaku' => 'required',
+    //         'alamat_pelaku' => 'required',
+    //         //'email_pelaku' => 'required',
+    //         'notlp_pelaku' => 'required',
+
+    //         'bukti' => 'required',
+    //         'bantuan' => 'required'
+    //     ]);
+
+    //     // $file = $this->bukti;
+    //     // $fileName = $file->getClientOriginalExtension();
+    //     // $file->move('buktipengaduan/', $fileName);
+
+    //     //  $bukti = md5($this->bukti.microtime()).'.'.$this->bukti->extension();
+
+    //     // Storage::putFileAs(
+    //     //     'public/buktipengaduan',
+    //     //     $this->bukti,
+    //     //     $bukti
+    //     // );
+
+    //     // $bukti = $this->bukti->store('buktipengaduan','public');
+
+    //     // $buktiFile = $this->bukti->extension();
+    //     // Storage::putFile(
+    //     //      'public/buktipengaduan',
+    //     //      $this->bukti,
+    //     //     );
+
+    //     // laravel crud upload
+    //     // $bukti = $this->bukti->file('bukti');
+    //     // $bukti->storeAs('public/buktipengaduan', $this->bukti);
+
+
+    //     Pengaduan::create([
+    //         'nama_korban' => $this->nama_korban,
+    //         'alamat_korban' => $this->alamat_korban,
+    //         'notlp_korban' => $this->notlp_korban,
+    //         'email_korban' => $this->email_korban,
+
+    //         'pembuat_pengaduan' => $this->pembuat_pengaduan,
+    //         'relasi_korban' => $this->relasi_korban,
+    //         //'email_pengadu' => $this->email_pengadu,
+            
+
+    //         'nama_pelaku' => $this->nama_pelaku,
+    //         'alamat_pelaku' => $this->alamat_pelaku,
+    //         'email_pelaku' => $this->email_pelaku,
+    //         'notlp_pelaku' => $this->notlp_pelaku,
+
+    //         'bukti' => $this->bukti,
+    //         'bantuan' => $this->bantuan
+    //     ]);
+
+    //     session()->flash('message', 'Data tersimpan');
+    //     $this->clearForm();
+    // }
 
     public function render()
     {

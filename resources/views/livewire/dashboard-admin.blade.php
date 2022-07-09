@@ -359,102 +359,8 @@
             </div>
         </div>
     </div>
-    <div class = "col-md-4">
-        <div class = "card">
-            <div class = "card-header">
-                Form data lokasi
-            </div>
-            <div class="card-body">
-                <form 
-                    @if($isEdit)
-                        wire:submit.prevent="updateLocation"
-                    @else
-                        wire:submit.prevent="saveLocation"
-                    @endif
-                >
-                    <div class= "row">
-                        <div class = "col-sm-6">
-                            <div class="form-group">
-                                <label>longtitude</label>
-                                <input wire:model= "long" type="text" class="form-control">
-                                @error('long') <small class="text-danger">{{ $message }}</small> @enderror
-                            </div>
-                        </div>
-                        <div class = "col-sm-6">
-                            <div class="form-group">
-                                <label>latitude</label>
-                                <input wire:model= "lat" type="text" class="form-control">
-                                @error('lat') <small class="text-danger">{{ $message }}</small> @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class ="form-group">
-                        <label>Nama Pelaku</label>
-                        <input wire:model= "nama_pelaku" type="text" class="form-control">
-                        @error('nama_pelaku') <small class="text-danger">{{ $message }}</small> @enderror
-                    </div>
-                    <div class ="form-group">
-                        <label>Alamat</label>
-                        <input wire:model= "alamat" type="text" class="form-control">
-                        @error('alamat') <small class="text-danger">{{ $message }}</small> @enderror
-                    </div>
-                    <div class ="form-group">
-                        <label>Keterangan</label>
-                        <textarea wire:model= "keterangan" class="form-control"></textarea>
-                        @error('keterangan') <small class="text-danger">{{ $message }}</small> @enderror
-                    </div>
-                    <div class ="form-group">
-                        <label>Image</label>
-                        <div class="input-group mb-3">
-                            <input wire:model="image" type="file" class="form-control" id="inputGroupFile02">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            <!-- @if($image)
-                                <img src="{{$image->temporaryUrl()}}" class="img-fluid">
-                            @endif
-
-                            @if($imageUrl && !$image)
-                                <img src = "{{asset('/storage/images/'.$imageUrl)}}" class="img-fluid">
-                            @endif -->
-                        </div>
-                        @error('image') <small class="text-danger">{{ $message }}</small> @enderror
-                        @if($image)
-                                <img src="{{$image->temporaryUrl()}}" class="img-fluid">
-                            @endif
-
-                            @if($imageUrl && !$image)
-                                <img src = "{{asset('/storage/images/'.$imageUrl)}}" class="img-fluid">
-                            @endif
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-dark text-white">{{ $isEdit? "Update Data" : "Submit Data"}}</button>
-                        @if($isEdit)
-                        <button wire:click="deleteLocation" type="button" class="btn btn-danger text-white">Delete Data</button>
-                        @endif
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> 
  
 </div>
-      <div class="row mt-4">
-        <div class="col-lg-7 mb-lg-0 mb-4">
-          <div class="card z-index-2 h-100">
-            <div class="card-header pb-0 pt-3 bg-transparent">
-              <h6 class="text-capitalize">Pemetaan Penyebaran Pelaku Kekerasan</h6>
-              <p class="text-sm mb-0">
-                <i class="fa fa-arrow-up text-success"></i>
-                <span class="font-weight-bold">4% more</span> in 2021
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="chart">
-                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- end coba masukin map -->
       <div class="row mt-10">
         <div class="col-lg-7 mb-lg-0 mb-4">
@@ -520,7 +426,62 @@
           </div>
         </div>
       </div>
+      <form  
+        @if($isEdit)
+            wire:submit.prevent="updateUser"
+        @else
+            wire:submit.prevent="saveUser"
+        @endif>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input  wire:model= "name" type="text" class="form-control @error('name') is-invalid @enderror"  placeholder="name">
+                        @error('summary')
+                            <span class="invalid-feedback">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <input  wire:model= "role_id" type="text" class="form-control @error('role_id') is-invalid @enderror"  placeholder="Oleh">
+                        @error('role_id')
+                            <span class="invalid-feedback">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">{{ $isEdit? "Update Data" : "Submit Data"}}</button>
+      </form>
       <div class="row mt-4">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama User</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Aksi</th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php $no = 0; ?>
+              @foreach($users as $user)
+              <?php $no++; ?>
+              <tr>
+                  <th scope ="row">{{ $no }} </th>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->role_id }}</td>
+                  <td>{{ $user->email }}</td>
+                  <td>
+                    <button wire:click="findUserById({{ $user->id}})" class = "btn btn-sm btn-info text-white">Edit</button>
+                    <button wire:click="deleteUser({{$user->id}})" class = "btn btn-sm btn-danger text-white">Delete</button>
+                  </td>
+              </tr>
+              @endforeach
+          </tbody>
+        </table>
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card ">
             <div class="card-header pb-0 p-3">

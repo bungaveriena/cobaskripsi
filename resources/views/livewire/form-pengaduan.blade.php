@@ -64,7 +64,7 @@
       </p>
     </div>
 <div class = "container">
-<form wire:submit.prevent="savePengaduan">
+<form wire:submit.prevent="saveData">
     <div class="form-row">    
         <div class="form-group col-md-6">
                 <label>Nama Korban</label>
