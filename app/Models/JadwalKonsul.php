@@ -25,6 +25,6 @@ class JadwalKonsul extends Model
 
     public function pengaduan(){
 
-        return $this->belongsTo(Pengaduan::class, 'pendamping_id');
+        return $this->belongsTo(Pengaduan::class, 'pengaduan_id');
     }
 }

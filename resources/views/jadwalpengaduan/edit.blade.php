@@ -43,7 +43,7 @@
                                 <label class="font-weight-bold">Pendamping</label>
                                 <select class ="form-select" name="pendamping_id">
                                     <option selected> Pendamping </option>
-                                    @foreach ($data_pendampings as pendamping)
+                                    @foreach ($data_pendampings as $pendamping)
                                     <option value="{{$pendamping->id}}">{{$pendamping->nama_pendamping}}</option>
                                     @endforeach>
                                 </select>
@@ -75,8 +75,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Pukul</label>
-                                <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" value = "{{ old('keterangan', $datajadwalkonsul->keterangan)}}" placeholder="Masukkan email pengaju">
+                                <label class="font-weight-bold">Keterangan</label>
+                                <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" value="{{ old('keterangan', $datajadwalkonsul->keterangan) }}" placeholder="isi keterangan">
                                 @error('keterangan')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}

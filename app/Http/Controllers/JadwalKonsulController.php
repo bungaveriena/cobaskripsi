@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalKonsul;
 use App\Models\Pengaduan;
-use app\Models\Pendamping;
+use App\Models\Pendamping;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendJadwal;
 use Illuminate\Support\Facades\Storage;
@@ -29,14 +29,14 @@ class JadwalKonsulController extends Controller
         $this->validate($request, [
             'tanggal' => 'required',
             'pukul'=> 'required',
-            'kronologi'=> 'required',
+            //'kronologi'=> 'required',
             'keterangan'=> 'required'
         ]);
 
         $jadwal = JadwalKonsul::create([
             'tanggal' => $request->tanggal,
             'pukul'=> $request->pukul,
-            'kronologi'=> $request->kronologi,
+            //'kronologi'=> $request->kronologi,
             'keterangan'=> $request->keterangan
         ]);
 
@@ -49,7 +49,10 @@ class JadwalKonsulController extends Controller
         }
     }
     public function edit(Pengaduan $datajadwalkonsul){
-        return view('jadwalpengaduan.edit', compact('datajadwalkonsul'));
+        return view('jadwalpengaduan.edit',[
+            'datajadwalkonsul' => $datajadwalkonsul,
+            'data_pendampings' => Pendamping::all()
+        ]);
     }
 
 
@@ -71,8 +74,8 @@ class JadwalKonsulController extends Controller
         $response->pengaduan_id = $id_pengaduan;
         $response->tanggal = $request->tanggal;
         $response->pukul = $request->pukul;
-        //$response->pendamping = $request->pendamping_id;
-        $response->kronologi = $request->kronologi;
+        $response->pendamping = $request->pendamping_id;
+        //$response->kronologi = $request->kronologi;
         $response->keterangan = $request->keterangan;
         // $response->user_id = Auth::id();
         $response->save();
