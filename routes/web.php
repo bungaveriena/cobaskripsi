@@ -38,7 +38,7 @@ Auth::routes();
 Route::post('proses_regis', [AuthController::class, 'proses_regis'])->name('proses_regis');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/map', MapLocation::class);
+
 // Route::get('datapendamping', DataPendamping::class);
 
 // Route::get('/summary', 'summary.index')->name('summary.index');
@@ -47,16 +47,14 @@ Route::get('/map', MapLocation::class);
 
 //Route::get('/summary', DataSummary::class);
 
-Route::resource('/summary', SummaryController::class);
-Route::get('/list', [SummaryController::class, 'listSummary'])->name('listSummary');
-Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('sendSummary'); //untuk button send email di summary.summary
+
 
 //Route::get('/datajadwalkonsul', JadwalKonsulController::class);
 Route::resource('/datajadwalkonsul', JadwalKonsulController::class);
 //Route::resource('/pengaduankonsul', PengaduanKonsulController::class);
-Route::resource('/user', UserController::class);
 
-Route::get('/pendamping', DataPendamping::class);
+
+
 Route::get('/pengaduan', DataPengaduan::class);
 //Route::get('/jadwalkonsul', DataJadwalKonsul::class);
 Route::get('/formpengaduan', FormPengaduan::class);
@@ -65,6 +63,13 @@ Route::get('/formpengajuancek', FormPengajuancek::class);
 Route::get('/index', HomeIndex::class);
 
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth', 'cekroleuser: 1,2']], function() {
+    //Route::group(['middleware' => ['cekroleuser']])
     Route::get('/dashboard', DashboardAdmin::class);
+    Route::get('/pendamping', DataPendamping::class);
+    Route::resource('/user', UserController::class);
+    Route::resource('/summary', SummaryController::class);
+    Route::get('/map', MapLocation::class);
+    Route::get('/list', [SummaryController::class, 'listSummary'])->name('listSummary');
+    Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('sendSummary'); //untuk button send email di summary.summary
 });
