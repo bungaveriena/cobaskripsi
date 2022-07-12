@@ -185,8 +185,19 @@
             @enderror
         </div>
     </div>
+        <div class="form-group">
+          <label>kronologi</label>
+          <input wire:model= "kronologi" type="text" class="form-control @error('kronologi') is-invalid @enderror"  placeholder="kronologi"/>
+          @error('kronologi')
+                <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                </span>
+            @enderror
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Submit Data</button>
+    </div>
     <div>
-    <button type="submit" class="btn btn-sm btn-primary">Submit Data</button>
+    
 </form>
 </div>
 </div>

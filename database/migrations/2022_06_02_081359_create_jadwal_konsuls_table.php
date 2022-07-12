@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('pukul');
             //$table->string('pendamping');
-            $table->string('kronologi');
+            
             $table->string('keterangan');
             $table->timestamps();
         });

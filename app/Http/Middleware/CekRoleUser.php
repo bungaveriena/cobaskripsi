@@ -26,10 +26,13 @@ class CekRoleUser
             return redirect('/dashboard');
         }
         $user = Auth::user();
+        // dump($user);
+        //  dd($roles);
+        // if($user->role_id == $roles)
+        //     return $next($request);
 
-        if($user->role_id == $roles)
+        if($user->role_id == 1 || $user->role_id == 2)
             return $next($request);
-
         return redirect('/')->with('error', "tidak ada akses login");
      
     }

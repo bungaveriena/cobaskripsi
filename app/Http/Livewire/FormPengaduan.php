@@ -14,7 +14,7 @@ class FormPengaduan extends Component
     public $pengaduanId, $nama_korban, $alamat_korban, $email_korban, $notlp_korban;
     public $pembuat_pengaduan, $relasi_korban;
     public $nama_pelaku,  $alamat_pelaku, $email_pelaku, $notlp_pelaku;
-    public $bukti, $bantuan;
+    public $kronologi, $bukti, $bantuan;
 
     private function clearForm(){
         $this->nama_korban = '';
@@ -30,6 +30,7 @@ class FormPengaduan extends Component
         $this->email_pelaku = '';
         $this->notlp_pelaku = '';
 
+        $this->kronologi = '';
         $this->bukti = '';
         $this->bantuan = '';
     }
@@ -48,6 +49,7 @@ class FormPengaduan extends Component
             'alamat_pelaku' => 'required',
             'notlp_pelaku' => 'required',
 
+            'kronologi' => 'required',
             'bukti' => 'required',
             'bantuan' => 'required'
         ]);
@@ -73,6 +75,7 @@ class FormPengaduan extends Component
             'email_pelaku' => $this->email_pelaku,
             'notlp_pelaku' => $this->notlp_pelaku,
         
+            'kronologi' => $this->kronologi,
             'bantuan' => $this->bantuan,
             'bukti' => $fileName,
         ]);
