@@ -37,7 +37,7 @@ Auth::routes();
 
 Route::post('proses_regis', [AuthController::class, 'proses_regis'])->name('proses_regis');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('datapendamping', DataPendamping::class);
 

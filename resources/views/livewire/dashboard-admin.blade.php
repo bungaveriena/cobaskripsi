@@ -80,7 +80,7 @@
             <span class="nav-link-text ms-1">Jadwal Konsul</span>
           </a>
         </li>
-        @if (auth()->user()->role_id = "1")
+        @if (Auth::user()->role->role_id = "1")
         <li class="nav-item">
           <a wire:click="datapendamping" href=""class="nav-link">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

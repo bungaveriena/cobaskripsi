@@ -23,7 +23,7 @@ class CekRoleUser
 
     //     return redirect('/dashboard');
         if(!Auth::check()){
-            return redirect('/');
+            return redirect('/dashboard');
         }
         $user = Auth::user();
 
