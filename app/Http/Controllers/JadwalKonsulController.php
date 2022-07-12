@@ -7,6 +7,8 @@ use App\Models\Pengaduan;
 use App\Models\Pendamping;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendJadwal;
+use App\Mail\SendSchedule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Response;
 use Illuminate\Http\Request;
@@ -61,28 +63,26 @@ class JadwalKonsulController extends Controller
         $this->validate($request, [
             'tanggal' => 'required',
             'pukul'=> 'required',
-            //'pendamping'=> 'required',
-            'kronologi'=> 'required',
+            'pendamping_id'=> 'required',
             'keterangan'=> 'required'
         ]);
 
         //get data by ID
-        
         $id_pengaduan = $datajadwalkonsul->getKey();
+
 
         $response = new JadwalKonsul();
         $response->pengaduan_id = $id_pengaduan;
         $response->tanggal = $request->tanggal;
         $response->pukul = $request->pukul;
-        $response->pendamping = $request->pendamping_id;
+        $response->pendamping_id = $request->pendamping_id;
         //$response->kronologi = $request->kronologi;
         $response->keterangan = $request->keterangan;
         // $response->user_id = Auth::id();
         $response->save();
-    
         if($response){
             // kirim email yang terdaftar di korban pada form pengaduan
-            Mail::to($datajadwalkonsul->email_korban)->send(new SendJadwal($datajadwalkonsul)); 
+            Mail::to($datajadwalkonsul->email_korban)->send(new SendSchedule($response, $datajadwalkonsul)); 
             //redirect dengan pesan sukses
             return redirect()->route('jadwalpengaduan.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{

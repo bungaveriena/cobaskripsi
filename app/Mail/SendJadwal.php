@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use App\Models\Pengaduan;
 use Illuminate\Queue\SerializesModels;
 
 class SendJadwal extends Mailable
@@ -16,9 +17,11 @@ class SendJadwal extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Pengaduan $datajadwalkonsul)
     {
         //
+        $this->datajadwalkonsul = $datajadwalkonsul;
+        dd($this->datajadwalkonsul);
     }
 
     /**
@@ -34,9 +37,7 @@ class SendJadwal extends Mailable
                                 'nama_korban' =>$this->datajadwalkonsul->nama_korban,
                                 'tanggal' =>$this->datajadwalkonsul->datajadwalkonsul->tanggal,
                                 'pukul' =>$this->datajadwalkonsul->datajadwalkonsul->pukul,
-                                'keterangan' =>$this->datajadwalkonsul->datajadwalkonsul->keterangan,
-                                //'pendamping'=>$this->datajadwalkonsul->pendamping,
-                                'summary'=>$this->summary->summary->summary,
+                                'keterangan' =>$this->datajadwalkonsul->datajadwalkonsul->keterangan
                             ]);
     }
 }

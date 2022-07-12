@@ -53,7 +53,7 @@
     <body>
         <div class="frame1">
             <div class="header">
-                <h5 style="color: #F99421; margin-top: -2px;">Hi {{$nama_pengaju}}</h5>
+                <h5 style="color: #F99421; margin-top: -2px;">Hi {{$nama_korban}}</h5>
                 <p>Kami sudah menerima form pengaduanmu. Berikut adalah jadwal konsultasi pendampingan untuk kamu.</p>
             </div>
             <div class="frame1-content">
@@ -96,7 +96,7 @@
                         </tr>
                         <tr>
                             <td>
-                                Keteangan :
+                                Keterangan :
                             </td>
                         </tr>
                         <tr>

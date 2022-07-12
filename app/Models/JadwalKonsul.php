@@ -14,7 +14,6 @@ class JadwalKonsul extends Model
         'pendamping_id', //untuk ambil pendamping yang mengisi konsultasi
         'tanggal',
         'pukul',
-        'kronologi',
         'keterangan'
     ];
 
