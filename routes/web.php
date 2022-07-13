@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JadwalKonsulController;
+use App\Http\Controllers\PelakuController;
+use App\Http\Controllers\PendampingController;
 use App\Http\Controllers\PengaduanKonsulController;
 use App\Http\Controllers\SummaryController;
 use App\Http\Controllers\UserController;
@@ -37,7 +39,7 @@ Auth::routes();
 
 Route::post('proses_regis', [AuthController::class, 'proses_regis'])->name('proses_regis');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('datapendamping', DataPendamping::class);
 
@@ -50,7 +52,6 @@ Route::post('proses_regis', [AuthController::class, 'proses_regis'])->name('pros
 
 
 //Route::get('/datajadwalkonsul', JadwalKonsulController::class);
-Route::resource('/datajadwalkonsul', JadwalKonsulController::class);
 //Route::resource('/pengaduankonsul', PengaduanKonsulController::class);
 
 
@@ -68,8 +69,12 @@ Route::group(['middleware' => ['auth', 'cekroleuser: 1,2']], function() {
     Route::get('/dashboard', DashboardAdmin::class);
     Route::get('/pendamping', DataPendamping::class);
     Route::resource('/user', UserController::class);
+    Route::resource('/datajadwalkonsul', JadwalKonsulController::class);
+    Route::get('/jadwal', [JadwalKonsulController::class, 'listJadwal'])->name('listJadwal');
     Route::resource('/summary', SummaryController::class);
+    Route::resource('/datapendamping', PendampingController::class);
     Route::get('/map', MapLocation::class);
     Route::get('/list', [SummaryController::class, 'listSummary'])->name('listSummary');
-    Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('sendSummary'); //untuk button send email di summary.summary
+    Route::resource('/pelaku', PelakuController::class);
+    // Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('sendSummary'); //untuk button send email di summary.summary
 });

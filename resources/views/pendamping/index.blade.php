@@ -2,38 +2,43 @@
 
 @section('content')
 <section class="content">
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('summary.create') }}" class="btn btn-md btn-success mb-3">Data Pengajuan</a>
+                    <a href="{{ route('datapendamping.create') }}" class="btn btn-md btn-success mb-3">TAMBAH DATA PENDAMPING</a>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Pengaju</th>
-                                    <th scope="col">Email Pengaju</th>
-                                    <th scope="col">Nama yang diajukan</th>
-                                    <th scope="col">Isi Summary</th>
-                                    <th scope="col">Penulis</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Email </th>
+                                    <th scope="col">Nomor Telepom </th>
+                                    <th scope="col">Pendidikan</th>
+                                    <th scope="col">Asal Instansi</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 0; ?>
-                                @foreach($summaries as $summary)
+                                @foreach($data_pendampings as $data)
                                 <?php $no++; ?>
                                 <tr>
                                     <th scope ="row">{{ $no }} </th>
-                                    <td>{{ $summary->pengajuan->nama_pengaju }}</td>
-                                    <td>{{ $summary->pengajuan->email_pengaju }}</td>
-                                    <td>{{ $summary->pengajuan->nama_diajukan }}</td>
-                                    <td>{{ $summary->summary }}</td>
-                                    <td>{{ $summary->created_by }}</td>
+                                    <td>{{ $data->nama_pendamping }}</td>
+                                    <td>{{ $data->email }}</td>
+                                    <td>{{ $data->no_tlp }}</td>
+                                    <td>{{ $data->pendidikan }}</td>
+                                    <td>{{ $data->asal_instansi }}</td>
                                     <td>
-                                    
-                                    <button type="submit" class = "btn btn-sm btn-warning text-white">Kirim Email</button>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('datapendamping.destroy', $data->id) }}" method="POST">
+                                            <a href="{{ route('datapendamping.edit', $data->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -48,5 +53,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </section>
 @endsection

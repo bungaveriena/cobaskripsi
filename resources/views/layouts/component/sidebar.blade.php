@@ -22,11 +22,45 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-header">Menu</li>
+               <li class="nav-item has-treeview menu-open">
+            <a href="/" class="nav-link active">
+                <i class="fa fa-flag"></i>
+              <p>
+                Data Pengaduan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('datajadwalkonsul.index') }}" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Data Pengaduan Form Publik</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item has-treeview menu-open">
             <a href="/countries" class="nav-link active">
                 <i class="fa fa-flag"></i>
               <p>
-                References
+                Data Pengajuan Cek
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('summary.index') }}" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Data Pengajuan Cek Form Publik</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="{{ route('datajadwalkonsul.index') }}" class="nav-link active">
+                <i class="fa fa-flag"></i>
+              <p>
+                Data Jadwal Konsul
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -34,20 +68,62 @@
               <li class="nav-item">
                 <a href="/countries" class="nav-link {{ Request::is('/countries') ? 'active' : '' }}">
                   <i class="fa fa-flag"></i>
-                  <p>References List</p>
+                  <p>Jadwal Pendampingan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/countries/create" class="nav-link {{ Request::is('/countries/create') ? 'active' : '' }}">
+                <a href="{{ route('datapendamping.index') }}" class="nav-link {{ Request::is('/countries/create') ? 'active' : '' }}">
                   <i class="fa fa-flag"></i>
-                  <p>Add References</p>
+                  <p>Data Pendamping</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="{{ route('summary.index') }}" class="nav-link active">
+                <i class="fas fa-user"></i>
+              <p>
+                Summary
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('listSummary') }}" class="nav-link {{ Request::is('/listuser') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>Data Summary</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
             <a href="/countries" class="nav-link active">
-                <i class="fas fa-user"></i>
+                <i class="fa fa-flag"></i>
+              <p>
+                Map
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ redirect()->to('/map') }}" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Dashboard Map</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('pelaku.index') }}" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>List Pelaku</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="/countries" class="nav-link active">
+                <i class="fa fa-flag"></i>
               <p>
                 User
                 <i class="right fas fa-angle-left"></i>
@@ -55,27 +131,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/user/listuser" class="nav-link {{ Request::is('/listuser') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>User</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="/countries" class="nav-link active">
-                <i class="fa fa-flag"></i>
-              <p>
-                Post
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/post/list" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
+                <a href="{{ route('user.index') }}" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-file"></i>
-                  <p>Post</p>
+                  <p>User Management</p>
                 </a>
               </li>
             </ul>
