@@ -71,12 +71,14 @@
                   <p>Jadwal Pendampingan</p>
                 </a>
               </li>
+              @if (Auth::user()->role_id == 1)
               <li class="nav-item">
                 <a href="{{ route('datapendamping.index') }}" class="nav-link {{ Request::is('/countries/create') ? 'active' : '' }}">
                   <i class="fa fa-flag"></i>
                   <p>Data Pendamping</p>
                 </a>
               </li>
+              @endif
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
@@ -121,6 +123,7 @@
               </li>
             </ul>
           </li>
+          @if (Auth::user()->role_id == 1)
           <li class="nav-item has-treeview menu-open">
             <a href="/user" class="nav-link active">
                 <i class="fa fa-flag"></i>
@@ -138,6 +141,7 @@
               </li>
             </ul>
           </li>
+          @endif
       </nav>
 
       <!-- /.sidebar-menu -->
