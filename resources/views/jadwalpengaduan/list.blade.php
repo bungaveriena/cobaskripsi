@@ -49,6 +49,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            {{ $data_pengaduans->links() }}
                         </table>
                     </div>
                 </div>

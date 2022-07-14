@@ -4,11 +4,21 @@
 <section class="content">
 
     <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/pelaku">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="cari nama pelaku" name="search">
+                        <button class="btn btn-md btn-warning" type="submit">cari</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                    <a href="{{ route('datapendamping.create') }}" class="btn btn-md btn-success mb-3">TAMBAH DATA PELAKU</a>
+                    <a href="/map" class="btn btn-md btn-success mb-3">Map</a>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -32,6 +42,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $locations->links() }}
                     </div>
                 </div>
             </div>

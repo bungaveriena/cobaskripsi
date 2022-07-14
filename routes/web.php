@@ -66,7 +66,7 @@ Route::get('/index', HomeIndex::class);
 
 Route::group(['middleware' => ['auth', 'cekroleuser: 1,2']], function() {
     //Route::group(['middleware' => ['cekroleuser']])
-    Route::get('/dashboard', DashboardAdmin::class);
+    // Route::get('/dashboard', DashboardAdmin::class);
     Route::get('/pendamping', DataPendamping::class);
     Route::resource('/user', UserController::class);
     Route::resource('/datajadwalkonsul', JadwalKonsulController::class);
@@ -76,5 +76,12 @@ Route::group(['middleware' => ['auth', 'cekroleuser: 1,2']], function() {
     Route::get('/map', MapLocation::class);
     Route::get('/list', [SummaryController::class, 'listSummary'])->name('listSummary');
     Route::resource('/pelaku', PelakuController::class);
+
+    Route::get('logout', function () {
+        auth()->logout();
+        Session()->flush();
+
+        return Redirect::to('/login');
+    })->name('logout');
     // Route::get('/list/{summary}', [SummaryController::class, 'sendSummary'])->name('sendSummary'); //untuk button send email di summary.summary
 });

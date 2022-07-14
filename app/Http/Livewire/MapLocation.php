@@ -157,6 +157,8 @@ class MapLocation extends Component
     public function render()
     {
         $this->loadLocations();
-        return view('livewire.map-location');
+        return view('livewire.map-location')
+        // ->extends('layouts.app');
+        ;
     }
 }

@@ -10,19 +10,28 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::latest()->paginate(10);
-        return view('user.index', compact('users'));
+        $users = User::latest();
+        if(request('search')){
+            $users->where('nama_pelaku', 'like', '%' . request('search'). '%');
+        }
+        return view('user.index', [
+            "users" => $users->paginate(5)
+        ]); 
+             //compact('users'));
 
-        // $summaries = Summary::latest()->paginate(10);
-        // return view('summary.summary', compact('summaries'));
     }
-    // public function edit($id)
+
+    // public function index()
     // {
-    //     $user = User::find($id);
-    //     $roles = Role::pluck('name','name')->all();
-    //     $userRole = $user->roles->pluck('name','name')->all();
-    
-    //     return view('users.edit',compact('user','roles','userRole'));
+    //     $locations = Location::latest();
+    //     if(request('search')){
+    //         $locations->where('nama_pelaku', 'like', '%' . request('search'). '%');
+    //     }
+        
+    //     return view('pelaku.index', [
+    //         "locations" => $locations->paginate(5)
+    //     ]);
+    //     // compact('locations'));
     // }
 
     // public function update(Request $request, $id)

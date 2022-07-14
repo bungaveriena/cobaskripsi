@@ -39,6 +39,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $jadwal_konsuls->links() }}
                     </div>
                 </div>
             </div>

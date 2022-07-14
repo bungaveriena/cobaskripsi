@@ -9,9 +9,27 @@ class PendampingController extends Controller
 {
     public function index()
     {
-        $data_pendampings = Pendamping::latest()->paginate(10);
-        return view('pendamping.index', compact('data_pendampings'));
+        $data_pendampings = Pendamping::latest();
+        if(request('search')){
+            $data_pendampings->where('nama_pendamping', 'like', '%' . request('search'). '%');
+        }
+        return view('pendamping.index', [
+            "data_pendampings" => $data_pendampings->paginate(5)
+        ]);
     }
+
+    // public function index()
+    // {
+    //     $users = User::latest();
+    //     if(request('search')){
+    //         $users->where('nama_pelaku', 'like', '%' . request('search'). '%');
+    //     }
+    //     return view('user.index', [
+    //         "users" => $users->paginate(5)
+    //     ]); 
+    //          //compact('users'));
+
+    // }
 
     public function create()
     {

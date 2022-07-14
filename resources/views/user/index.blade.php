@@ -4,6 +4,16 @@
 <section class="content">
 
     <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/user">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="cari nama user" name="search">
+                        <button class="btn btn-md btn-warning" type="submit">cari</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
@@ -38,6 +48,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $users->links() }}
                     </div>
                 </div>
             </div>

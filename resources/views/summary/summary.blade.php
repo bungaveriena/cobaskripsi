@@ -39,6 +39,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $summaries->links() }}
                     </div>
                 </div>
             </div>

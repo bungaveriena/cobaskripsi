@@ -40,7 +40,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="/countries" class="nav-link active">
+            <a href="{{ route('summary.index') }}" class="nav-link active">
                 <i class="fa fa-flag"></i>
               <p>
                 Data Pengajuan Cek
@@ -66,7 +66,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/countries" class="nav-link {{ Request::is('/countries') ? 'active' : '' }}">
+                <a href="{{ route('listJadwal') }}" class="nav-link {{ Request::is('/countries') ? 'active' : '' }}">
                   <i class="fa fa-flag"></i>
                   <p>Jadwal Pendampingan</p>
                 </a>
@@ -106,7 +106,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ redirect()->to('/map') }}" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
+                <a href="/map" class="nav-link {{ Request::is('*/posts/list') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-file"></i>
                   <p>Dashboard Map</p>
                 </a>
@@ -122,7 +122,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="/countries" class="nav-link active">
+            <a href="/user" class="nav-link active">
                 <i class="fa fa-flag"></i>
               <p>
                 User
@@ -143,4 +143,4 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </aside>
+</aside>

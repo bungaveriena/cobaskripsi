@@ -13,10 +13,15 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Form Pengajuan Cek</a>
       </li>
+      
     </ul>
+    
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="/logout" class="nav-link">Logout</a>
+      </li>
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -39,4 +44,4 @@
         </div>
       </li>
     </ul>
-  </nav>
+</nav>

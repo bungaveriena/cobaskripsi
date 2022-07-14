@@ -44,6 +44,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $data_pengajuan_ceks->links() }}
                     </div>
                 </div>
             </div>

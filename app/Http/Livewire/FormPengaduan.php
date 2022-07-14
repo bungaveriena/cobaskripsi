@@ -156,6 +156,7 @@ class FormPengaduan extends Component
 
     public function render()
     {
-        return view('livewire.form-pengaduan');
+        return view('livewire.form-pengaduan')
+                ;
     }
 }

@@ -9,7 +9,7 @@
 
     <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
 
-    <title>Dashboard Map</title>
+    <title>Home - Form</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -87,9 +87,6 @@
             {{ isset ($slot) ?$slot : null }}
         </main>
     </div>
-    @livewireScripts
-
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
 
 
 
