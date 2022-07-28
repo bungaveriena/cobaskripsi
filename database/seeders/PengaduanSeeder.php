@@ -26,6 +26,7 @@ class PengaduanSeeder extends Seeder
             'alamat_pelaku'     => 'Bogor',
             'email_pelaku'      => 'budi@gmail.com',
             'notlp_pelaku'      => '0000000099',
+            'kronologi'         => 'kronologi',
             'bukti'             => 'terlampir link drive',
             'bantuan'           => 'pendampingan psikolog'
         ]);
@@ -41,6 +42,7 @@ class PengaduanSeeder extends Seeder
             'alamat_pelaku'     => 'Jakarta Selatan',
             'email_pelaku'      => 'budiman@gmail.com',
             'notlp_pelaku'      => '0000000088',
+            'kronologi'         => 'kronologi',
             'bukti'             => 'terlampir link drive',
             'bantuan'           => 'bantuan hukum'
         ]);
@@ -56,6 +58,7 @@ class PengaduanSeeder extends Seeder
             'alamat_pelaku'     => 'Jakarta Barat',
             'email_pelaku'      => 'joe@gmail.com',
             'notlp_pelaku'      => '0000000077',
+            'kronologi'         => 'kronologi',
             'bukti'             => 'terlampir link drive',
             'bantuan'           => 'akses kesehatan'
         ]);

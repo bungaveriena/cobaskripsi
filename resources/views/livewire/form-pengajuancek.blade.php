@@ -1,9 +1,4 @@
 <div>
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message')}}
-        </div>
-    @endif
     <body class="sub_page">
   <div class="hero_area">
     <!-- header section strats -->
@@ -24,24 +19,12 @@
                 <div class="d-flex  flex-column flex-lg-row align-items-center">
                   <ul class="navbar-nav  ">
                     <li class="nav-item active">
-                      <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="about.html">About </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="service.html">Services </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"> Login</a>
+                      <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
                     </li>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                  <!-- <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                  </form>
+                  </form> -->
                 </div>
               </div>
             </nav>
@@ -57,13 +40,20 @@
         Form Pengajuan Cek 
       </h2>
       <p>
-        Pastikan mengisi data dengan benar dan bertanggung jawab
+        Pastikan mengisi data dengan benar dan bertanggung jawab <br>
+        Data pengajuan cek akan diproses dan hasil pengecekan dikirim via email.
       </p>
     </div>
 <div class = "container">
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message')}}
+    </div>
+    @endif
     <form wire:submit.prevent="savePengajuan">
         <div class="form-row">
             <div class="form-group col-md-6">
+            <label>Nama Pengaju Pengecekan</label>
                 <input  wire:model= "nama_pengaju" type="text" class="form-control @error('nama_pengaju') is-invalid @enderror"  placeholder="nama pengaju">
                     @error('nama_pengaju')
                         <span class="invalid-feedback">
@@ -72,6 +62,7 @@
                     @enderror
             </div>
             <div class="form-group col-md-6">
+              <label>Alamat Pengaju Pengecekan</label>
                 <input  wire:model= "alamat" type="text" class="form-control @error('alamat') is-invalid @enderror"  placeholder="alamat pengaju">
                     @error('alamat')
                         <span class="invalid-feedback">
@@ -82,7 +73,8 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <input  wire:model= "no_tlp" type="text" class="form-control @error('no_tlp') is-invalid @enderror"  placeholder="no tlp pengaju">
+            <label>Nomor Telepon Pengaju</label>
+                <input  wire:model= "no_tlp" type="text" class="form-control @error('no_tlp') is-invalid @enderror"  placeholder="kontak yang dapat dihubungi">
                     @error('no_tlp')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
@@ -90,6 +82,7 @@
                     @enderror
             </div>
             <div class="form-group col-md-6">
+            <label>Email Pengaju</label>
                 <input  wire:model= "email_pengaju" type="text" class="form-control @error('email_pengaju') is-invalid @enderror"  placeholder="email pengaju">
                     @error('email_pengaju')
                         <span class="invalid-feedback">
@@ -100,6 +93,7 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
+            <label>Asal Instansi Pengaju</label>
                 <input  wire:model= "asal_instansi" type="text" class="form-control @error('asal_instansi') is-invalid @enderror"  placeholder="asal instansi">
                     @error('asal_instansi')
                         <span class="invalid-feedback">
@@ -108,6 +102,7 @@
                     @enderror
             </div>
             <div class="form-group col-md-6">
+            <label>Nama yang diajukan untuk dicek</label>
                 <input  wire:model= "nama_diajukan" type="text" class="form-control @error('nama_diajukan') is-invalid @enderror"  placeholder="nama yang diajukan untuk dicek">
                     @error('nama_diajukan')
                         <span class="invalid-feedback">
@@ -118,6 +113,7 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
+            <label>Relasi Pengaju dengan Nama yang diajukan</label>
                 <input  wire:model= "relasi" type="text" class="form-control @error('relasi') is-invalid @enderror"  placeholder="relasi dengan nama yang diajukan">
                     @error('relasi')
                         <span class="invalid-feedback">
@@ -126,7 +122,8 @@
                     @enderror
             </div>
                 <div class="form-group col-md-6">
-                    <input  wire:model= "keperluan" type="text" class="form-control @error('keperluan') is-invalid @enderror"  placeholder="keperluan pengajuan">
+                <label>Keperluan Pengecekan</label>
+                    <input  wire:model= "keperluan" type="text" class="form-control @error('keperluan') is-invalid @enderror"  placeholder="maksud, tujuan, urgensi mengajukan cek">
                     @error('keperluan')
                         <span class="invalid-feedback">
                             <strong>{{$message}}</strong>
@@ -134,12 +131,6 @@
                     @enderror
                 </div>
         </div>
-        <div>
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message')}}
-                </div>
-            @endif
         <button type="submit" class="btn btn-sm btn-primary">Submit Data</button>
     </form>
 </div>

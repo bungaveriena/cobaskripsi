@@ -79,7 +79,7 @@
                             </div>
                             
 
-                            <button type="submit" class="btn btn-md btn-primary">Simpan dan Kirim datajadwalkonsul</button>
+                            <button type="submit" class="btn btn-md btn-primary">Kirim Email</button>
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>
 
                         </form>

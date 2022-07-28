@@ -1,14 +1,13 @@
 @extends('layouts.adminlte')
 
 @section('content')
-<section class="content">>
-
+<section class="content">
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="" class="btn btn-md btn-success mb-3">Data Pengajuan</a>
+                        <h3> Data Pengajuan Cek</h3>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -37,7 +36,7 @@
                                     <td>{{ $data->relasi }}</td>
                                     <td>{{ $data->keperluan }}</td>
                                     <td>
-                                    <a href="{{ route('summary.edit', $data->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    <a href="{{ route('summary.edit', $data->id) }}" class="btn btn-sm btn-primary">Proses</a>
                                     <!-- <buttontype="submit" class = "btn btn-sm btn-danger text-white">Delete</button> -->
                                     </td>
                                 </tr>

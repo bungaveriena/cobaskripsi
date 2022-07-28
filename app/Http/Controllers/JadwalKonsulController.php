@@ -84,10 +84,10 @@ class JadwalKonsulController extends Controller
             // kirim email yang terdaftar di korban pada form pengaduan
             Mail::to($datajadwalkonsul->email_korban)->send(new SendSchedule($response, $datajadwalkonsul)); 
             //redirect dengan pesan sukses
-            return redirect()->route('jadwalpengaduan.index')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('datajadwalkonsul.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('jadwalpengaduan.index')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('datajadwalkonsul.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
 

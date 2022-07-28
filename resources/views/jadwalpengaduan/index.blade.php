@@ -7,6 +7,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
+                    <h3> Data Jadwal</h3>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -31,16 +32,16 @@
                                     <td>{{ $jadwal->tanggal }}</td>
                                     <td>{{ $jadwal->pukul }}</td>
                                     <td>{{ $jadwal->keterangan }}</td>
-                                    <td>
+                                    <!-- <td>
                                     
-                                    <!-- <button type="submit" class = "btn btn-sm btn-warning text-white">Kirim Email</button>
+                                    <button type="submit" class = "btn btn-sm btn-warning text-white">Kirim Email</button>
                                     </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $jadwal_konsuls->links() }}
                     </div>
+                    {{ $jadwal_konsuls->links() }}
                 </div>
             </div>
         </div>

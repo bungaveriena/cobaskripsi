@@ -39,8 +39,8 @@ return [
     |
     */
 
-     'layout' => 'layouts.app',
-    //'layout' => 'layouts.map',
+     //'layout' => 'layouts.app',
+    'layout' => 'layouts.map',
     //'layout' => 'layouts.public',
     //'layout' => 'layouts.adminlte',
 

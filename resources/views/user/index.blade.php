@@ -18,6 +18,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
+                    <h3> Data User</h3>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -25,6 +26,7 @@
                                     <th scope="col">Nama</th>
                                     <th scope="col">Email </th>
                                     <th scope="col">Role</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

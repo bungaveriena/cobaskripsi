@@ -17,13 +17,13 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
     @livewireStyles
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="{{asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div> -->
 
   <!-- Navbar -->
   @include('layouts.component.header')
@@ -38,7 +38,7 @@
     <div class="content-header">
       <div class="container-fluid">
       <div class="row mb-2">
-      <h1 class="m-0 text-dark"></h1>
+      <h1 class="m-0 text-light"></h1>
       </div>
         <div class="row mb-2">
 
@@ -60,7 +60,7 @@
 
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-light">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->

@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('summary.create') }}" class="btn btn-md btn-success mb-3">Data Pengajuan</a>
+                    <h3>Summary</h3>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -17,7 +17,7 @@
                                     <th scope="col">Nama yang diajukan</th>
                                     <th scope="col">Isi Summary</th>
                                     <th scope="col">Penulis</th>
-                                    <th scope="col">Aksi</th>
+                                    <!-- <th scope="col">Aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,10 +31,10 @@
                                     <td>{{ $summary->pengajuan->nama_diajukan }}</td>
                                     <td>{{ $summary->summary }}</td>
                                     <td>{{ $summary->created_by }}</td>
-                                    <td>
+                                    <!-- <td>
                                     
                                     <button type="submit" class = "btn btn-sm btn-warning text-white">Kirim Email</button>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>

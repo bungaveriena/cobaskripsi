@@ -1,9 +1,4 @@
 <div>
-    @if (session()->has('message'))
-    <div class="alert alert-success">
-        {{ session('message')}}
-    </div>
-    @endif
 
     <!-- kenapa div alert mau jalan kalo diatas doang ya -->
 
@@ -27,24 +22,9 @@
                 <div class="d-flex  flex-column flex-lg-row align-items-center">
                   <ul class="navbar-nav  ">
                     <li class="nav-item active">
-                      <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="about.html">About </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="service.html">Services </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"> Login</a>
+                      <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
                     </li>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                  </form>
                 </div>
               </div>
             </nav>
@@ -60,15 +40,21 @@
         Form Pengaduan
       </h2>
       <p>
-        Pastikan mengisi data dengan benar dan bertanggung jawab
+        Pastikan mengisi data dengan benar dan bertanggung jawab <br>
+        Data form pengaduan ini akan diproses dan selanjutnya dijadwalkan pendampingan (dikirim di email)
       </p>
     </div>
 <div class = "container">
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message')}}
+    </div>
+    @endif
 <form wire:submit.prevent="saveData">
     <div class="form-row">    
         <div class="form-group col-md-6">
                 <label>Nama Korban</label>
-                <input  wire:model= "nama_korban" type="text" class="form-control @error('nama_korban') is-invalid @enderror"  placeholder="nama korban">
+                <input  wire:model= "nama_korban" type="text" class="form-control @error('nama_korban') is-invalid @enderror"  placeholder="tuliskan nama korban">
                 @error('nama_korban')
                     <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
@@ -77,7 +63,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Alamat Korban</label>
-                <input  wire:model= "alamat_korban" type="text" class="form-control @error('alamat_korban') is-invalid @enderror"  placeholder="alamat korban">
+                <input  wire:model= "alamat_korban" type="text" class="form-control @error('alamat_korban') is-invalid @enderror"  placeholder="tuliskan alamat korban">
                 @error('alamat_korban')
                     <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
@@ -88,7 +74,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Email Korban</label>
-            <input  wire:model= "email_korban" type="text" class="form-control @error('email_korban') is-invalid @enderror"  placeholder="email korban">
+            <input  wire:model= "email_korban" type="text" class="form-control @error('email_korban') is-invalid @enderror"  placeholder="tuliskan email korban">
             @error('email_korban')
                 <span class="invalid-feedback">
                     <strong>{{$message}}</strong>
@@ -97,7 +83,7 @@
         </div>
         <div class="form-group col-md-6">
             <label>Kontak Korban</label>
-            <input  wire:model= "notlp_korban" type="text" class="form-control @error('notlp_korban') is-invalid @enderror"  placeholder="no tlp korban">
+            <input  wire:model= "notlp_korban" type="text" class="form-control @error('notlp_korban') is-invalid @enderror"  placeholder="kontak korban yang dapat dihubungi">
             @error('notlp_korban')
                 <span class="invalid-feedback">
                     <strong>{{$message}}</strong>
@@ -116,7 +102,7 @@
             @enderror
         </div>
         <div class="form-group col-md-6">
-            <label>Rekasi Pembuat dengan Korban</label>
+            <label>Relasi Pembuat dengan Korban</label>
             <input  wire:model= "relasi_korban" type="text" class="form-control @error('relasi_korban') is-invalid @enderror"  placeholder="relasi pembuat pengaduan dengan korban">
             @error('relasi_korban')
                 <span class="invalid-feedback">
@@ -167,8 +153,8 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label>Bukti</label>
-            <input  wire:model= "bukti" type="file" class="form-control @error('bukti') is-invalid @enderror"  placeholder="bukti">
+            <label>Bukti (File PDF/Gambar)</label>
+            <input  wire:model= "bukti" type="file" class="form-control @error('bukti') is-invalid @enderror"  placeholder="lampirkan bukti pendukung dalam bentuk file gambar atau pdf">
             @error('bukti')
                 <span class="invalid-feedback">
                     <strong>{{$message}}</strong>
@@ -177,7 +163,7 @@
         </div>
         <div class="form-group col-md-6">
             <label>Bantuan</label>
-            <input  wire:model= "bantuan" type="text" class="form-control @error('bantuan') is-invalid @enderror"  placeholder="bantuan">
+            <input  wire:model= "bantuan" type="text" class="form-control @error('bantuan') is-invalid @enderror"  placeholder="cth: bantuan hukum, pendampingan psikologis, rumah aman">
             @error('bantuan')
                 <span class="invalid-feedback">
                     <strong>{{$message}}</strong>
@@ -187,7 +173,7 @@
     </div>
         <div class="form-group">
           <label>kronologi</label>
-          <input wire:model= "kronologi" type="text" class="form-control @error('kronologi') is-invalid @enderror"  placeholder="kronologi"/>
+          <input wire:model= "kronologi" type="text" class="form-control @error('kronologi') is-invalid @enderror"  placeholder="sertakan kronologi kejadian sejelas mungkin"/>
           @error('kronologi')
                 <span class="invalid-feedback">
                     <strong>{{$message}}</strong>

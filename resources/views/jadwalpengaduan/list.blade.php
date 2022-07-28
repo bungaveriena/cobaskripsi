@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <!-- <a href="{{ route('summary.create') }}" class="btn btn-md btn-success mb-3">Data Pengajuan</a> -->
+                    <h3> Data Pengaduan</h3>
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -17,6 +17,7 @@
                                     <th scope="col">Nomor Telepon Korban</th>
                                     <th scope="col">Pembuat Pengaduan</th>
                                     <th scope="col">Pelaku Yang dilaporkan</th>
+                                    <th scope="col">Kronologi</th>
                                     <th scope="col">Bukti</th>
                                     <th scope="col">Bantuan Yang Dibutuhkan</th>
                                     <th scope="col">Aksi</th>
@@ -33,24 +34,20 @@
                                     <td>{{ $data->notlp_korban }}</td>
                                     <td>{{ $data->pembuat_pengaduan }}</td>
                                     <td>{{ $data->nama_pelaku }}</td>
+                                    <td>{{ $data->kronologi }}</td>
                                     <td>
-                                        <!-- <a href="public/buktipengaduan/{{ $data->bukti  }}"><button class="btn btn-success" type="button">View</button> -->
-                                        <!-- <a href="public/filebukti/{{$data->bukti}}" download="{{$data->bukti}}"><button class="btn btn-success" type="button">View</button> -->
-                                        <!-- <a href="Storage::url($data->bukti);" download="{{$data->bukti}}"><button class="btn btn-success" type="button">View</button> -->
-                                        <!-- <a href="storage/app/public/filebukti/{{$data->bukti}}" download="{{$data->bukti}}"><button class="btn btn-success" type="button">View</button> -->
                                         <img src="{{ Storage::url('public/filebukti/').$data->bukti }}" class="rounded" style="width: 150px">
                                         <a href="storage/filebukti/{{$data->bukti}}" download="{{$data->bukti}}"><button class="btn btn-success" type="button">View</button>
                                     </td>
                                     <td>{{ $data->bantuan }}</td>
                                     <td>
-                                    <a href="{{ route('datajadwalkonsul.edit', $data->id) }}" class="btn btn-sm btn-primary">buat jadwal</a>
-                                    <button class = "btn btn-sm btn-danger text-white">Delete</button>
+                                    <a href="{{ route('datajadwalkonsul.edit', $data->id) }}" class="btn btn-sm btn-primary">Proses</a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                            {{ $data_pengaduans->links() }}
                         </table>
+                        {{ $data_pengaduans->links() }}
                     </div>
                 </div>
             </div>
