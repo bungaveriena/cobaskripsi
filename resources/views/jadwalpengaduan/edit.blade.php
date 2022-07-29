@@ -38,7 +38,7 @@
                                 <select class ="form-select" name="pendamping_id">
                                     <option selected> Pendamping </option>
                                     @foreach ($data_pendampings as $pendamping)
-                                    <option value="{{$pendamping->id}}">{{$pendamping->nama_pendamping}}</option>
+                                    <option value="{{$pendamping->id}}">{{$pendamping->user->name}}</option>
                                     @endforeach>
                                 </select>
                                 @error('nama_pendamping')

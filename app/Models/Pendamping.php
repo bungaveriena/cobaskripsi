@@ -10,10 +10,15 @@ class Pendamping extends Model
     use HasFactory;
     protected $table = "data_pendampings";
     protected $fillable = [
-        'nama_pendamping', 'pendidikan', 'asal_instansi', 'email', 'no_tlp'
+        'pendidikan', 'asal_instansi', 'no_tlp'
     ];
 
     public function jadwal(){
         return $this->hasMany(JadwalKonsul::class);
+    }
+
+    public function user(){
+
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

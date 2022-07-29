@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Summary</title>
+        <title>Jadwal Konsultasi</title>
         <style>
         body {
             background-color: rgb(230, 225, 225);
@@ -15,8 +15,14 @@
             font-size: 17px;
         }
         th {
+            text-align: left;
             height: 30px;
         }
+        td.top { vertical-align: text-top; }
+        td.bottom { vertical-align: text-bottom; }
+        td.middle { vertical-align: middle; }
+
+
         .table-border {
             border: 1px solid black;
         }
@@ -38,6 +44,7 @@
         }
         .frame1-content {
             padding: 15px;
+            
         }
         div.header {
             text-align: center;
@@ -53,43 +60,34 @@
     <body>
         <div class="frame1">
             <div class="header">
-                <h5 style="color: #F99421; margin-top: -2px;">Hi {{$nama_pengaju}}</h5>
-                <p>Berikut adalah informasi yang dapat kami berikan dari form pengajuan yang telah kamu isi.</p>
+                <h3 style="color: #F99421; margin-top: -2px;">Hi {{$nama_pengaju}}</h5>
+                <p>Berikut adalah informasi yang dapat kami berikan dari form pengajuan yang telah kamu isi.s</p>
             </div>
             <div class="frame1-content">
-                <div class="square-round">
+               <div class="square-round">
                     <table style="width: 100%">
-                        <tr>
+                       <tr>
                             <td colspan="2">
-                                <h3 class= "grey-border"> Data</h3>
+                                <h3 class= "grey-border">Hasil Pengecekan</h3>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                Nama Yang Diajukan :
-                            </td>
+                            <th>Nama Yang Diajukan:</th>
+                            <td>{{ $nama_diajukan}}</td>
                         </tr>
                         <tr>
-                            <td>
-                            {{ $nama_diajukan}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Summary :
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            {{ $summary}}
-                            </td>
+                            <th>Summary:</th>
+                            <td>{{ $summary}}</td>
                         </tr>
                     </table>
+
+
                 </div>
                 <p>Mohon untuk bertanggung jawab atas informasi yang telah diberikan. Terima kasih.</p>
                 <br>
                 <p>Salam.</p>
             </div>
         </div>
+
     </body>
 </html>

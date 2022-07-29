@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendamping;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PendampingController extends Controller
@@ -71,7 +72,7 @@ class PendampingController extends Controller
         }
     }
 
-    public function edit(Pendamping $datapendamping)
+    public function edit(User $datapendamping)
     {
         return view('pendamping.edit', compact('datapendamping'));
     }
@@ -84,36 +85,32 @@ class PendampingController extends Controller
     * @param  mixed $blog
     * @return void
     */
-    public function update(Request $request, Pendamping $datapendamping)
+    public function update(Request $request, User $datapendamping)
     {
         $this->validate($request, [
-            'nama_pendamping'     => 'required',
             'pendidikan'          => 'required',
             'asal_instansi'       => 'required',
-            'email'               => 'required',
             'no_tlp'              => 'required'
         ]);
-    
-        //get data Blog by ID
-        $datapendamping = Pendamping::findOrFail($datapendamping->id);
-    
+
         
-            $datapendamping->update([
-            'nama_pendamping'     => $request->nama_pendamping,
-            'pendidikan'          => $request->pendidikan,
-            'asal_instansi'       => $request->asal_instansi,
-            'email'               => $request->email,
-            'no_tlp'              => $request->no_tlp
-            ]);
-    
-    
-        if($datapendamping){
-            //redirect dengan pesan sukses
-            return redirect()->route('datapendamping.index')->with(['success' => 'Data Berhasil Diupdate!']);
-        }else{
-            //redirect dengan pesan error
-            return redirect()->route('datapendamping.index')->with(['error' => 'Data Gagal Diupdate!']);
-        }
+       //get data by ID
+       $id_user = $datapendamping->getKey();
+
+
+       $response = new Pendamping();
+       $response->user_id = $id_user;
+       $response->pendidikan = $request->pendidikan;
+       $response->asal_instansi = $request->asal_instansi;
+       $response->no_tlp = $request->no_tlp;
+       $response->save();
+       if($response){
+           //redirect dengan pesan sukses
+           return redirect()->route('datapendamping.index')->with(['success' => 'Data Berhasil Diupdate!']);
+       }else{
+           //redirect dengan pesan error
+           return redirect()->route('datapendamping.index')->with(['error' => 'Data Gagal Diupdate!']);
+       }
     }
 
     public function destroy($id)

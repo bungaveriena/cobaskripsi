@@ -15,8 +15,14 @@
             font-size: 17px;
         }
         th {
+            text-align: left;
             height: 30px;
         }
+        td.top { vertical-align: text-top; }
+        td.bottom { vertical-align: text-bottom; }
+        td.middle { vertical-align: middle; }
+
+
         .table-border {
             border: 1px solid black;
         }
@@ -38,6 +44,7 @@
         }
         .frame1-content {
             padding: 15px;
+            
         }
         div.header {
             text-align: center;
@@ -53,63 +60,45 @@
     <body>
         <div class="frame1">
             <div class="header">
-                <h5 style="color: #F99421; margin-top: -2px;">Hi {{$nama_korban}}</h5>
+                <h3 style="color: #F99421; margin-top: -2px;">Hi {{$nama_korban}}</h5>
                 <p>Kami sudah menerima form pengaduanmu. Berikut adalah jadwal konsultasi pendampingan untuk kamu.</p>
             </div>
             <div class="frame1-content">
-                <div class="square-round">
+               <div class="square-round">
                     <table style="width: 100%">
-                        <tr>
+                       <tr>
                             <td colspan="2">
                                 <h3 class= "grey-border">Jadwal Pendamping</h3>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                Nama :
-                            </td>
+                            <th>Nama:</th>
+                            <td>{{ $nama_korban}}</td>
                         </tr>
                         <tr>
-                            <td>
-                            {{ $nama_korban}}
-                            </td>
+                            <th>Tanggal:</th>
+                            <td>{{ $tanggal}}</td>
                         </tr>
                         <tr>
-                            <td>
-                                Tanggal :
-                            </td>
+                            <th>Pukul:</th>
+                            <td>{{ $pukul}}</td>
                         </tr>
                         <tr>
-                            <td>
-                            {{ $tanggal}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Pukul :
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            {{ $pukul}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                            <th>
                                 Keterangan :
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                            </th>
+                            <td style="vertical-align: baseline">
                             {{ $keterangan}}
                             </td>
                         </tr>
                     </table>
+
                 </div>
                 <p>Mohon untuk hadir tepat waktu. Terima kasih.</p>
                 <br>
                 <p>Salam.</p>
             </div>
         </div>
+
     </body>
 </html>

@@ -41,6 +41,7 @@
                                     <td>
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('user.destroy', $user->id) }}" method="POST">
                                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                            <a href="{{ route('datapendamping.edit', $user->id) }}" class="btn btn-sm btn-primary">Tambah Pendamping</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

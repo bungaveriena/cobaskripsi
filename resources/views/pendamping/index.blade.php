@@ -25,7 +25,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Email </th>
-                                    <th scope="col">Nomor Telepom </th>
+                                    <th scope="col">Nomor Telepon </th>
                                     <th scope="col">Pendidikan</th>
                                     <th scope="col">Asal Instansi</th>
                                     <th scope="col">Aksi</th>
@@ -37,8 +37,8 @@
                                 <?php $no++; ?>
                                 <tr>
                                     <th scope ="row">{{ $no }} </th>
-                                    <td>{{ $data->nama_pendamping }}</td>
-                                    <td>{{ $data->email }}</td>
+                                    <td>{{ $data->user->name }}</td>
+                                    <td>{{ $data->user->email }}</td>
                                     <td>{{ $data->no_tlp }}</td>
                                     <td>{{ $data->pendidikan }}</td>
                                     <td>{{ $data->asal_instansi }}</td>

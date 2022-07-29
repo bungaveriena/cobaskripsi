@@ -14,10 +14,10 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $datapendamping->name) }}" placeholder="Masukkan Nama">
+                                <input type="text" class="form-control @error('nama_pendamping') is-invalid @enderror" name="nama_pendamping" value="{{ old('nama_pendamping', $datapendamping->nama_pendamping) }}" placeholder="Masukkan Nama">
                             
                                 <!-- error message untuk email -->
-                                @error('name')
+                                @error('nama_pendamping')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>

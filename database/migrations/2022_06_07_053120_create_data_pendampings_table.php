@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('data_pendampings', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pendamping');
+            $table->foreignId('user_id');
+            //$table->string('nama_pendamping');
             $table->string('pendidikan');
             $table->string('asal_instansi');
-            $table->string('email');
+            //$table->string('email');
             $table->string('no_tlp');
             $table->timestamps();
         });
